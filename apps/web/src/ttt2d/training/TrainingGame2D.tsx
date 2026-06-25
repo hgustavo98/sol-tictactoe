@@ -5,8 +5,6 @@ import {
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ArrowLeft, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { TttBoard } from "../TttBoard";
 import { pickTrainingMove } from "./trainingAi";
 
@@ -15,7 +13,7 @@ interface TrainingGame2DProps {
   embedded?: boolean;
 }
 
-export function TrainingGame2D({ onExit, embedded = false }: TrainingGame2DProps) {
+export function TrainingGame2D({ onExit }: TrainingGame2DProps) {
   const { t } = useTranslation();
   const [playerColor, setPlayerColor] = useState<"w" | "b">("w");
   const [fen, setFen] = useState(INITIAL_TTT_FEN);
@@ -51,8 +49,7 @@ export function TrainingGame2D({ onExit, embedded = false }: TrainingGame2DProps
       } catch {
         return;
       }
-      const nextFen = board.fen();
-      setFen(nextFen);
+      setFen(board.fen());
       setMoves((m) => [...m, cell]);
       finishIfOver(board);
     },
@@ -66,11 +63,9 @@ export function TrainingGame2D({ onExit, embedded = false }: TrainingGame2DProps
     setAiThinking(true);
     const timer = window.setTimeout(() => {
       const move = pickTrainingMove(fen, aiColor);
-      if (move) {
-        applyMove(move.to);
-      }
+      if (move) applyMove(move.to);
       setAiThinking(false);
-    }, 450);
+    }, 350);
 
     return () => window.clearTimeout(timer);
   }, [fen, aiColor, ended, aiThinking, engine, applyMove]);
@@ -83,33 +78,27 @@ export function TrainingGame2D({ onExit, embedded = false }: TrainingGame2DProps
     setAiThinking(false);
   };
 
-  const swapColor = () => {
-    reset();
-    setPlayerColor((c) => (c === "w" ? "b" : "w"));
-  };
-
   const lastMove = moves.length > 0 ? moves[moves.length - 1] : null;
 
   return (
-    <div className={cn("ttt-game-root ttt-training-root", embedded && "ttt-game-root-embedded")}>
-      <div className="ttt-training-toolbar">
-        <Button variant="ghost" size="sm" onClick={onExit}>
-          <ArrowLeft className="size-4" />
-          {t("training.exit")}
-        </Button>
-        <span className="ttt-training-label">{t("training.title")}</span>
-        <div className="ttt-training-tools">
-          <Button variant="outline" size="sm" onClick={swapColor}>
+    <div className="xtt-match">
+      <div className="xtt-training-bar">
+        <button type="button" className="xtt-link" onClick={onExit}>
+          <ArrowLeft className="inline size-3" /> {t("training.exit")}
+        </button>
+        <span>{t("training.title")}</span>
+        <div className="xtt-training-tools">
+          <button type="button" className="xtt-link" onClick={() => { reset(); setPlayerColor((c) => (c === "w" ? "b" : "w")); }}>
             {t("training.swapColor")}
-          </Button>
-          <Button variant="outline" size="sm" onClick={reset}>
-            <RotateCcw className="size-3.5" />
-            {t("training.reset")}
-          </Button>
+          </button>
+          <button type="button" className="xtt-link" onClick={reset}>
+            <RotateCcw className="inline size-3" />
+          </button>
         </div>
       </div>
 
-      {ended && <p className="ttt-training-result">{endMessage}</p>}
+      {ended && <p className="xtt-status xtt-status-yours">{endMessage}</p>}
+      {aiThinking && <p className="xtt-status">{t("training.thinking")}</p>}
 
       <TttBoard
         fen={fen}
@@ -118,10 +107,6 @@ export function TrainingGame2D({ onExit, embedded = false }: TrainingGame2DProps
         onCellClick={applyMove}
         lastMove={lastMove}
       />
-
-      {aiThinking && (
-        <p className="ttt-training-thinking">{t("training.thinking")}</p>
-      )}
     </div>
   );
 }

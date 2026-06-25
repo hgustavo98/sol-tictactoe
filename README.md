@@ -1,4 +1,4 @@
-# SOL TTT
+# SOL Tic Tac Toe
 
 **Bet SOL. Play Tic Tac Toe. Win the Pot.**
 

@@ -40,6 +40,7 @@ interface LobbyCenterProps {
   onExitLobbyView: () => void;
   onCancelWaiting?: () => void;
   onResign?: () => void;
+  onTrainingStart?: () => void;
   activeTournament?: TournamentState | null;
   tournamentPostGame?: "won" | "lost" | null;
   tournamentFinished?: TournamentFinishedPayload | null;

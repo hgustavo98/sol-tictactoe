@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "SOL TTT",
+    "title": "SOL Tic Tac Toe",
     "tagline": "Solana · 1v1 stakes"
   },
   "auth": {
@@ -45,7 +45,7 @@
     "bitcoin": "Bitcoin",
     "copy": "Copy address",
     "copied": "Copied!",
-    "note": "Thank you for your support — every contribution helps keep SOL TTT running."
+    "note": "Thank you for your support — every contribution helps keep SOL Tic Tac Toe running."
   },
   "hardwareAccel": {
     "title": "Hardware acceleration recommended",
@@ -350,7 +350,7 @@
     "modes": "Game modes",
     "backToLobby": "Back to lobby"
   },
-  "ttt": {
+  "ticTacToe": {
     "yourTurn": "Your turn",
     "opponentTurn": "Opponent's turn"
   },

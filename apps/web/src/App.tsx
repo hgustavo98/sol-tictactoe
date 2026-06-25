@@ -27,7 +27,6 @@ import { Header } from "./components/Header";
 import { HardwareAccelBanner } from "./components/HardwareAccelBanner";
 import { LobbyCenter } from "./components/LobbyCenter";
 import { MainLayout } from "./components/layout/MainLayout";
-import { GameInterfaceShell } from "./components/layout/GameInterfaceShell";
 import type { LobbyView } from "./ttt2d/lobby/lobbyView";
 import type { GameModeId } from "./config/gameModes";
 import { useLobbyActions } from "./hooks/useLobbyActions";
@@ -541,7 +540,7 @@ export function App() {
   }, [isDevnet, configLoading]);
 
   return (
-    <div className="app-shell">
+    <div className="app-shell xtt-app">
       <Header onDevnetBadgeClick={() => setDevnetWarningOpen(true)} />
       <DevnetWarningModal
         open={devnetWarningOpen}
@@ -571,25 +570,7 @@ export function App() {
 
       <main className="app-main">
         <MainLayout lobbyView={lobbyView}>
-          <GameInterfaceShell
-            lobbyView={lobbyView}
-            onTrainingStart={() => setLobbyView("training")}
-            profile={{
-              connected: socket.connected,
-              profile: playerProfile,
-              game: inGame ? gameState : null,
-              onResign: handleResign,
-              onBackToLobby: undefined,
-              playerId: playerId ?? undefined,
-              opponentWallet,
-              opponentProfile,
-              activeTournament,
-              activeMatchId,
-              tournamentProfiles,
-              countsForRating,
-              isTournamentMatch,
-            }}
-          >
+          <div className="xtt-shell">
             <LobbyCenter
               lobbies={waitingLobbies}
               betSol={betSol}
@@ -646,6 +627,7 @@ export function App() {
               onExitLobbyView={exitLobbyView}
               onCancelWaiting={cancelWaitingRoom}
               onResign={handleResign}
+              onTrainingStart={() => setLobbyView("training")}
               activeTournament={activeTournament}
               tournamentPostGame={tournamentPostGame}
               tournamentFinished={tournamentFinished}
@@ -654,7 +636,7 @@ export function App() {
               hostProfiles={hostProfiles}
               onJoinLobby={(l) => void handleJoin(l, { expectedGameMode: gameMode })}
             />
-          </GameInterfaceShell>
+          </div>
         </MainLayout>
       </main>
 

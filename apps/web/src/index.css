@@ -161,32 +161,32 @@
   --font-display: "Orbitron", "Segoe UI", sans-serif;
   --font-game: "Rajdhani", "Segoe UI", sans-serif;
 
-  /* SOL TTT — neon purple / cyan */
-  --background: #0d0221;
-  --foreground: #f0eeff;
-  --card: #150734;
-  --card-foreground: #f0eeff;
-  --popover: #150734;
-  --popover-foreground: #f0eeff;
-  --primary: #00f5d4;
-  --primary-foreground: #0d0221;
-  --secondary: #1a0a3e;
-  --secondary-foreground: #f0eeff;
-  --muted: #1f0d45;
-  --muted-foreground: #a89ec9;
-  --accent: #9b5de5;
-  --accent-foreground: #f0eeff;
-  --destructive: #f15bb5;
-  --border: #3d2a6e;
-  --input: #3d2a6e;
-  --ring: #00f5d4;
-  --gold: #fee440;
+  /* SOL Tic Tac Toe — blue neon + purple */
+  --background: #060912;
+  --foreground: #e8ecf4;
+  --card: #0c1024;
+  --card-foreground: #e8ecf4;
+  --popover: #0c1024;
+  --popover-foreground: #e8ecf4;
+  --primary: #00b4ff;
+  --primary-foreground: #060912;
+  --secondary: #111833;
+  --secondary-foreground: #e8ecf4;
+  --muted: #151b32;
+  --muted-foreground: #8892a8;
+  --accent: #7c3aed;
+  --accent-foreground: #f3f0ff;
+  --destructive: #f472b6;
+  --border: rgba(51, 207, 255, 0.2);
+  --input: rgba(124, 58, 237, 0.35);
+  --ring: #33cfff;
+  --gold: #fbbf24;
 
-  --pool-blue: #150734;
-  --pool-blue-dark: #0d0221;
-  --pool-green: #00f5d4;
-  --pool-green-dark: #00c4aa;
-  --game-header-height: 3.35rem;
+  --pool-blue: #0c1024;
+  --pool-blue-dark: #060912;
+  --pool-green: #00b4ff;
+  --pool-green-dark: #0088cc;
+  --game-header-height: 2.75rem;
 }
 
 * {

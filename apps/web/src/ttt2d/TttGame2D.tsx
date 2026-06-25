@@ -7,17 +7,14 @@ import {
 } from "@sol-tictactoe/shared";
 import { useCallback, useMemo, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { Flag } from "lucide-react";
 import type { Socket } from "socket.io-client";
 import { useTranslation } from "react-i18next";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ResignConfirmDialog } from "@/components/ResignConfirmDialog";
 import { usePlayerProfile } from "@/hooks/usePlayerProfile";
-import { PlayerAvatar } from "@/components/player/PlayerAvatar";
 import { shortenAddress } from "@sol-tictactoe/shared";
 import { TttBoard, getWinningLine } from "./TttBoard";
-import { TTT_THEME } from "./theme";
+import { GAME_THEME } from "./theme";
 
 interface TttGame2DProps {
   socket: Socket | null;
@@ -42,13 +39,11 @@ export function TttGame2D({
   playerId: playerIdProp,
   myProfile,
   opponentProfile,
-  embedded = false,
   onResign,
 }: TttGame2DProps) {
   const { t } = useTranslation();
   const { publicKey } = useWallet();
-  const wallet = publicKey?.toBase58();
-  const playerId = playerIdProp ?? wallet;
+  const playerId = playerIdProp ?? publicKey?.toBase58();
   const fetchedMyProfile = usePlayerProfile(playerId);
   const effectiveMyProfile = fetchedMyProfile ?? myProfile;
   const [resignOpen, setResignOpen] = useState(false);
@@ -59,11 +54,10 @@ export function TttGame2D({
 
   const opponentWallet =
     playerId === game.playerWhite ? game.playerBlack : game.playerWhite;
-  const opponent =
-    opponentProfile ??
-    (opponentWallet
-      ? { wallet: opponentWallet, nickname: null, avatarUrl: null }
-      : null);
+  const opponentName =
+    opponentProfile?.nickname ?? shortenAddress(opponentWallet ?? "");
+  const myName =
+    effectiveMyProfile?.nickname ?? shortenAddress(playerId ?? "");
 
   const winningLine = useMemo(() => getWinningLine(game.fen), [game.fen]);
   const lastMove = game.moves.length > 0 ? game.moves[game.moves.length - 1] : null;
@@ -93,47 +87,31 @@ export function TttGame2D({
     });
   };
 
-  const activeWallet = game.turn === "w" ? game.playerWhite : game.playerBlack;
-  const activeIsMe = activeWallet === playerId;
+  const iAmWhite = myColor === "w";
+  const topName = iAmWhite ? opponentName : myName;
+  const bottomName = iAmWhite ? myName : opponentName;
+  const topActive = inPlay && game.turn === "b";
+  const bottomActive = inPlay && game.turn === "w";
 
   return (
-    <div className={cn("ttt-game-root", embedded && "ttt-game-root-embedded")}>
-      <div className="ttt-game-header">
-        <div className={cn("ttt-player-card", !activeIsMe && game.turn === "b" && "ttt-player-active")}>
-          <PlayerAvatar profile={opponent} size="md" />
-          <div className="ttt-player-meta">
-            <span className="ttt-player-name">
-              {opponent?.nickname ?? shortenAddress(opponentWallet ?? "")}
-            </span>
-            <span className="ttt-player-mark" style={{ color: TTT_THEME.oColor }}>O</span>
-          </div>
-          <span className="ttt-clock">{formatClock(game.blackTimeMs)}</span>
+    <div className="xtt-match">
+      <div className={cn("xtt-player-row", topActive && "xtt-player-row-active")}>
+        <div className="xtt-player-left">
+          <span className="xtt-mark" style={{ color: GAME_THEME.oColor }}>O</span>
+          <span className="xtt-player-name">{topName}</span>
         </div>
-
-        <div className="ttt-turn-indicator">
-          {inPlay && (
-            <span className={cn("ttt-turn-pill", activeIsMe && "ttt-turn-pill-yours")}>
-              {activeIsMe ? t("ttt.yourTurn") : t("ttt.opponentTurn")}
-            </span>
-          )}
-          {game.betLamports > 0 && (
-            <span className="ttt-pot-badge">
-              {(game.potLamports / 1e9).toFixed(2)} SOL
-            </span>
-          )}
-        </div>
-
-        <div className={cn("ttt-player-card", activeIsMe && game.turn === "w" && "ttt-player-active")}>
-          <PlayerAvatar profile={effectiveMyProfile} size="md" />
-          <div className="ttt-player-meta">
-            <span className="ttt-player-name">
-              {effectiveMyProfile?.nickname ?? shortenAddress(playerId ?? "")}
-            </span>
-            <span className="ttt-player-mark" style={{ color: TTT_THEME.xColor }}>X</span>
-          </div>
-          <span className="ttt-clock">{formatClock(game.whiteTimeMs)}</span>
-        </div>
+        <span className="xtt-clock">{formatClock(game.blackTimeMs)}</span>
       </div>
+
+      {inPlay && (
+        <p className={cn("xtt-status", isMyTurn && "xtt-status-yours")}>
+          {isMyTurn ? t("ticTacToe.yourTurn") : t("ticTacToe.opponentTurn")}
+        </p>
+      )}
+
+      {game.betLamports > 0 && (
+        <p className="xtt-pot">{(game.potLamports / 1e9).toFixed(2)} SOL</p>
+      )}
 
       <TttBoard
         fen={game.fen}
@@ -144,18 +122,18 @@ export function TttGame2D({
         lastMove={lastMove}
       />
 
-      {inPlay && (
-        <div className="ttt-game-actions">
-          <Button
-            variant="outline"
-            size="sm"
-            className="ttt-resign-btn"
-            onClick={() => setResignOpen(true)}
-          >
-            <Flag className="size-3.5" />
-            {t("game.resign")}
-          </Button>
+      <div className={cn("xtt-player-row", bottomActive && "xtt-player-row-active")}>
+        <div className="xtt-player-left">
+          <span className="xtt-mark" style={{ color: GAME_THEME.xColor }}>X</span>
+          <span className="xtt-player-name">{bottomName}</span>
         </div>
+        <span className="xtt-clock">{formatClock(game.whiteTimeMs)}</span>
+      </div>
+
+      {inPlay && (
+        <button type="button" className="xtt-resign" onClick={() => setResignOpen(true)}>
+          {t("game.resign")}
+        </button>
       )}
 
       <ResignConfirmDialog

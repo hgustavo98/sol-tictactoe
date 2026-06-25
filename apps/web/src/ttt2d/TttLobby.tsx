@@ -29,13 +29,10 @@ import { TournamentWaitingRoom } from "@/components/tournament/TournamentWaiting
 import { GameModalErrorBoundary } from "@/components/GameModalErrorBoundary";
 import { TrainingGame2D } from "./training/TrainingGame2D";
 import { useLobbyCarousel } from "../damas3d/lobby/useLobbyCarousel";
-import { LobbyConnectOverlay } from "../damas3d/lobby/LobbyConnectOverlay";
-import { LobbyGuestWalletPrompt } from "../damas3d/lobby/LobbyGuestWalletPrompt";
 import type { LobbyView } from "./lobby/lobbyView";
-import { MODE_ACCENT, TTT_THEME } from "./theme";
+import { MODE_ACCENT } from "./theme";
 import type { ArenaCardData } from "../damas3d/lobby/ArenaCard3D";
 import { cn } from "@/lib/utils";
-import { Zap, Trophy, Users, Sparkles } from "lucide-react";
 
 export interface TttLobbyProps {
   playerId?: string;
@@ -73,6 +70,7 @@ export interface TttLobbyProps {
   onExitLobbyView: () => void;
   onCancelWaiting?: () => void;
   onResign?: () => void;
+  onTrainingStart?: () => void;
   activeTournament?: TournamentState | null;
   tournamentPostGame?: "won" | "lost" | null;
   tournamentFinished?: TournamentFinishedPayload | null;
@@ -80,13 +78,6 @@ export interface TttLobbyProps {
   onExitTournament?: () => void;
   hostProfiles?: Record<string, PlayerProfile>;
   onJoinLobby?: (lobby: LobbyMatch) => void;
-}
-
-function modeIcon(mode: GameModeId) {
-  if (isCasualMode(mode)) return Users;
-  if (isRankedMode(mode)) return Trophy;
-  if (mode.startsWith("tournament")) return Sparkles;
-  return Zap;
 }
 
 export function TttLobby(props: TttLobbyProps) {
@@ -103,7 +94,6 @@ export function TttLobby(props: TttLobbyProps) {
     betSol,
     loading,
     matchmakeQueued = false,
-    matchmakeStatus = null,
     lobbyView,
     activeMatchId,
     waitingBet = 0,
@@ -126,6 +116,7 @@ export function TttLobby(props: TttLobbyProps) {
     onExitLobbyView,
     onCancelWaiting,
     onResign,
+    onTrainingStart,
     activeTournament,
     tournamentPostGame,
     tournamentFinished,
@@ -151,206 +142,180 @@ export function TttLobby(props: TttLobbyProps) {
   });
 
   const browsing = lobbyView === "browse";
-  const showConnectOverlay = browsing && !walletConnected && !guestModeActive;
-  const hasLobbyAccess = walletConnected || guestModeActive;
+  const hasAccess = walletConnected || guestModeActive;
+  const showConnect = browsing && !walletConnected && !guestModeActive;
 
-  const isFreeCasualSlide =
+  const isFreeCasual =
     isCasualMode(carousel.activeMode) &&
     betSolForMode(carousel.activeMode, betSol) === 0;
 
-  const activeModeStatus = statusFor(carousel.activeMode);
   const modeBlocked = !isPlayable(carousel.activeMode);
-
   const playDisabled =
     modeBlocked ||
-    (isGuest && !isFreeCasualSlide) ||
+    (isGuest && !isFreeCasual) ||
     (guestModeActive && !walletConnected && !playerId) ||
     (carousel.isCustomSlide && !!validateBetSol(betSol)) ||
     (carousel.isRankedStakeSlide && !!validateRankedBetSol(betSol)) ||
     matchmakeQueued ||
-    carousel.isTournamentSlide;
+    carousel.isTournamentSlide ||
+    loading;
 
   const activeEntrySol = isRankedMode(carousel.activeMode)
     ? betSol
     : betSolForMode(carousel.activeMode, betSol);
 
+  const activeCard = carousel.cardDataList[carousel.index];
   const activeLobby = activeMatchId
     ? lobbies.find((l) => l.id === activeMatchId)
     : undefined;
 
-  const joinableLobbies = useJoinableOpenTables(lobbies, browsing && hasLobbyAccess);
-
+  const joinableLobbies = useJoinableOpenTables(lobbies, browsing && hasAccess);
   const contextOpenTables = useMemo(
     () => filterLobbiesByContext(joinableLobbies, carousel.activeMode, betSol),
     [joinableLobbies, carousel.activeMode, betSol],
   );
 
-  const activeCard = carousel.cardDataList[carousel.index];
-
   return (
-    <div className="ttt-lobby-root" data-view={lobbyView}>
-      {browsing && (
-        <div className="ttt-lobby-bg" aria-hidden>
-          <div className="ttt-lobby-bg-grid" />
-          <div className="ttt-lobby-bg-glow" />
+    <div className="xtt-lobby" data-view={lobbyView}>
+      {showConnect && (
+        <div className="xtt-connect">
+          <p>{t("lobby.connectWallet")}</p>
+          <div className="xtt-connect-actions">
+            <button type="button" className="xtt-btn xtt-btn-primary" disabled>
+              {t("wallet.connect")}
+            </button>
+            <button
+              type="button"
+              className="xtt-btn xtt-btn-ghost"
+              disabled={guestStarting}
+              onClick={onPlayAsGuest}
+            >
+              {guestStarting ? "…" : t("lobby.playAsGuest")}
+            </button>
+          </div>
         </div>
       )}
 
-      {showConnectOverlay && (
-        <LobbyConnectOverlay
-          guestStarting={guestStarting}
-          onPlayAsGuest={onPlayAsGuest}
-        />
-      )}
-
-      {browsing && hasLobbyAccess && (
-        <div className="ttt-lobby-layout">
-          <aside className="ttt-mode-sidebar">
-            <h2 className="ttt-sidebar-title">{t("lobby.modes")}</h2>
-            <div className="ttt-mode-list">
-              {carousel.cardDataList.map((card: ArenaCardData, i: number) => {
-                const Icon = modeIcon(card.id as GameModeId);
-                const accent = MODE_ACCENT[card.id] ?? TTT_THEME.primary;
-                const active = i === carousel.index;
-                const locked = card.locked;
-                return (
-                  <button
-                    key={card.id}
-                    type="button"
-                    className={cn(
-                      "ttt-mode-chip",
-                      active && "ttt-mode-chip-active",
-                      locked && "ttt-mode-chip-locked",
-                    )}
-                    style={{ "--chip-accent": accent } as CSSProperties}
-                    onClick={() => carousel.selectIndex(i)}
-                    disabled={locked}
-                  >
-                    <Icon className="size-4" />
-                    <span>{card.title}</span>
-                    {card.badge && <span className="ttt-mode-badge">{card.badge}</span>}
-                  </button>
-                );
-              })}
-            </div>
-          </aside>
-
-          <main className="ttt-lobby-main">
-            {isGuest && !isFreeCasualSlide && activeModeStatus === "open" && (
-              <LobbyGuestWalletPrompt />
-            )}
-
-            {activeCard && (
-              <div
-                className="ttt-hero-card"
-                style={
-                  {
-                    "--hero-accent":
-                      MODE_ACCENT[carousel.activeMode] ?? TTT_THEME.primary,
-                  } as CSSProperties
-                }
-              >
-                <div className="ttt-hero-icon" aria-hidden>
-                  <svg viewBox="0 0 64 64" width="72" height="72">
-                    <rect x="8" y="8" width="48" height="48" rx="8" fill="none" stroke="currentColor" strokeWidth="2" opacity="0.4" />
-                    <line x1="24" y1="24" x2="40" y2="40" stroke={TTT_THEME.xColor} strokeWidth="3" strokeLinecap="round" />
-                    <line x1="40" y1="24" x2="24" y2="40" stroke={TTT_THEME.xColor} strokeWidth="3" strokeLinecap="round" />
-                    <circle cx="44" cy="20" r="6" fill="none" stroke={TTT_THEME.oColor} strokeWidth="2.5" />
-                  </svg>
-                </div>
-                <h1 className="ttt-hero-title">{activeCard.title}</h1>
-                <p className="ttt-hero-desc">{activeCard.subtitle}</p>
-
-                {carousel.isCustomSlide && (
-                  <div className="ttt-bet-row">
-                    <label className="ttt-bet-label">{t("bet.amount")}</label>
-                    <input
-                      type="range"
-                      min={0.1}
-                      max={10}
-                      step={0.1}
-                      value={betSol}
-                      onChange={(e) => onSelectBet(parseFloat(e.target.value))}
-                      className="ttt-bet-slider"
-                    />
-                    <span className="ttt-bet-value">{formatSolAmount(betSol)} SOL</span>
-                  </div>
+      {browsing && hasAccess && activeCard && (
+        <div className="xtt-card">
+          <div className="xtt-mode-row">
+            {carousel.cardDataList.map((card: ArenaCardData, i: number) => (
+              <button
+                key={card.id}
+                type="button"
+                className={cn(
+                  "xtt-mode-pill",
+                  i === carousel.index && "xtt-mode-pill-active",
                 )}
+                style={
+                  i === carousel.index
+                    ? ({ "--pill-accent": MODE_ACCENT[card.id] } as CSSProperties)
+                    : undefined
+                }
+                onClick={() => carousel.selectIndex(i)}
+                disabled={card.locked}
+              >
+                {card.title}
+              </button>
+            ))}
+          </div>
 
-                <div className="ttt-hero-actions">
-                  {!carousel.isTournamentSlide && !carousel.isRankedSlide && (
-                    <button
-                      type="button"
-                      className="ttt-play-btn"
-                      disabled={playDisabled || loading}
-                      onClick={() => onPlay(carousel.activeMode)}
-                    >
-                      {isFreeCasualSlide ? (
-                        t("play.free")
-                      ) : (
-                        <SolAmount amount={formatSolAmount(activeEntrySol)} iconClassName="size-4" suffix />
-                      )}
-                    </button>
-                  )}
+          <h2 className="xtt-card-title">{activeCard.title}</h2>
+          <p className="xtt-card-desc">{activeCard.subtitle}</p>
 
-                  {carousel.isRankedSlide && (
-                    <>
-                      <button
-                        type="button"
-                        className="ttt-play-btn ttt-play-btn-secondary"
-                        disabled={playDisabled || loading || matchmakeQueued}
-                        onClick={() => onRankedMatchmake?.()}
-                      >
-                        {matchmakeQueued ? t("ranked.searching") : t("ranked.findMatch")}
-                      </button>
-                      <button
-                        type="button"
-                        className="ttt-play-btn"
-                        disabled={playDisabled || loading}
-                        onClick={() =>
-                          onRankedOpenTable?.() ?? onPlay(carousel.activeMode)
-                        }
-                      >
-                        {t("ranked.openTable")}
-                      </button>
-                      {matchmakeQueued && (
-                        <button type="button" className="ttt-cancel-btn" onClick={() => onRankedCancel?.()}>
-                          {t("ranked.cancel")}
-                        </button>
-                      )}
-                    </>
-                  )}
+          {carousel.isCustomSlide && (
+            <div className="xtt-stake-row">
+              <span>SOL</span>
+              <input
+                type="range"
+                min={0.1}
+                max={10}
+                step={0.1}
+                value={betSol}
+                onChange={(e) => onSelectBet(parseFloat(e.target.value))}
+              />
+              <span className="xtt-stake-val">{formatSolAmount(betSol)}</span>
+            </div>
+          )}
 
-                  {carousel.isTournamentSlide && (
-                    <button
-                      type="button"
-                      className="ttt-play-btn"
-                      disabled={isGuest || modeBlocked || loading}
-                      onClick={() =>
-                        tournamentRegistered
-                          ? onTournamentUnregister?.()
-                          : onTournamentRegister?.()
-                      }
-                    >
-                      {tournamentRegistered ? t("tournament.leave") : t("tournament.join")}
-                    </button>
-                  )}
-                </div>
+          {!carousel.isTournamentSlide && !carousel.isRankedSlide && (
+            <button
+              type="button"
+              className="xtt-btn xtt-btn-primary"
+              style={{ width: "100%" }}
+              disabled={playDisabled}
+              onClick={() => onPlay(carousel.activeMode)}
+            >
+              {isFreeCasual ? (
+                t("play.free")
+              ) : (
+                <SolAmount amount={formatSolAmount(activeEntrySol)} iconClassName="size-3.5" suffix />
+              )}
+            </button>
+          )}
 
-                <button
-                  type="button"
-                  className="ttt-open-tables-btn"
-                  onClick={() => setOpenTablesOpen((o) => !o)}
-                >
-                  {t("openTables.title")} ({contextOpenTables.length})
+          {carousel.isRankedSlide && (
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
+              <button
+                type="button"
+                className="xtt-btn xtt-btn-ghost"
+                disabled={playDisabled || matchmakeQueued}
+                onClick={() => onRankedMatchmake?.()}
+              >
+                {matchmakeQueued ? t("ranked.searching") : t("ranked.findMatch")}
+              </button>
+              <button
+                type="button"
+                className="xtt-btn xtt-btn-primary"
+                disabled={playDisabled}
+                onClick={() => onRankedOpenTable?.() ?? onPlay(carousel.activeMode)}
+              >
+                {t("ranked.openTable")}
+              </button>
+              {matchmakeQueued && (
+                <button type="button" className="xtt-link" onClick={() => onRankedCancel?.()}>
+                  {t("ranked.cancel")}
                 </button>
-              </div>
+              )}
+            </div>
+          )}
+
+          {carousel.isTournamentSlide && (
+            <button
+              type="button"
+              className="xtt-btn xtt-btn-primary"
+              style={{ width: "100%" }}
+              disabled={isGuest || modeBlocked || loading}
+              onClick={() =>
+                tournamentRegistered
+                  ? onTournamentUnregister?.()
+                  : onTournamentRegister?.()
+              }
+            >
+              {tournamentRegistered ? t("tournament.leave") : t("tournament.join")}
+            </button>
+          )}
+
+          <div className="xtt-footer-links">
+            <button type="button" className="xtt-link" onClick={() => setOpenTablesOpen(true)}>
+              {t("openTables.title")} ({contextOpenTables.length})
+            </button>
+            {onTrainingStart && (
+              <button type="button" className="xtt-link" onClick={onTrainingStart}>
+                {t("training.startShort")}
+              </button>
             )}
-          </main>
+          </div>
+
+          {isGuest && !isFreeCasual && statusFor(carousel.activeMode) === "open" && (
+            <p className="xtt-card-desc" style={{ marginTop: "0.5rem", marginBottom: 0 }}>
+              {t("lobby.guestModesLocked")}
+            </p>
+          )}
         </div>
       )}
 
-      {browsing && hasLobbyAccess && (
+      {browsing && hasAccess && (
         <OpenTablesSheet
           open={openTablesOpen}
           onOpenChange={setOpenTablesOpen}
@@ -370,7 +335,7 @@ export function TttLobby(props: TttLobbyProps) {
       )}
 
       {!browsing && (
-        <div className="ttt-stage-overlay">
+        <div className="xtt-stage">
           <GameModalErrorBoundary key={lobbyView} onReset={onExitLobbyView}>
             {lobbyView === "training" && (
               <TrainingGame2D embedded onExit={onExitLobbyView} />
@@ -387,9 +352,9 @@ export function TttLobby(props: TttLobbyProps) {
               />
             )}
             {lobbyView === "game" && (!gameState || !playerId || !socket) && (
-              <div className="ttt-stage-empty">
+              <div className="xtt-empty">
                 <p>{t("game.boardUnavailable")}</p>
-                <button type="button" className="ttt-stage-empty-btn" onClick={onExitLobbyView}>
+                <button type="button" className="xtt-link" onClick={onExitLobbyView}>
                   {t("lobby.backToLobby")}
                 </button>
               </div>

@@ -54,7 +54,7 @@ export function Header({ onDevnetBadgeClick }: HeaderProps) {
     <header className="game-header">
       <div className="game-header-inner">
         <div className="game-header-brand">
-          <BrandLogo className="game-header-logo" size={42} />
+          <BrandLogo className="game-header-logo" size={28} />
           <span className="game-header-title">{t("app.title")}</span>
           {devnetBadge}
         </div>
