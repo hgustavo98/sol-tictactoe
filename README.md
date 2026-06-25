@@ -31,8 +31,12 @@ npm run dev:game
 
 ## Deploy
 
-- **Frontend:** [sol-tictactoe.vercel.app](https://sol-tictactoe.vercel.app) (Vercel — sem domínio customizado)
-- **API:** Render (`render.yaml`, Docker) — `https://sol-ttt-api.onrender.com`
+| Serviço | URL |
+|---------|-----|
+| **Jogo (Vercel)** | [sol-ttt.vercel.app](https://sol-ttt.vercel.app) |
+| **Repo GitHub** | [hgustavo98/sol-tictactoe](https://github.com/hgustavo98/sol-tictactoe) |
+| **Projeto Vercel** | `sol-ttt` |
+| **API (Render)** | `https://sol-ttt-api.onrender.com` |
 
 ## Game modes
 
