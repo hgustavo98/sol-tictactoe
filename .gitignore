@@ -1,0 +1,20 @@
+# Sol Chess — ignore patterns
+node_modules/
+dist/
+target/
+.anchor/
+data/
+authority.json
+fee-wallet.json
+.env
+apps/server/.env
+apps/server/.env.local
+docs/secrets.local.env
+docs/vercel.production.env
+docs/render.deploy.env
+*.pem
+id.json
+*.db
+
+.vercel
+.env*

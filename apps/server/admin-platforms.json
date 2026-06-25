@@ -1,0 +1,17 @@
+{
+  "platforms": [
+    {
+      "id": "local",
+      "type": "api_key",
+      "enabled": true,
+      "label": "API Key"
+    },
+    {
+      "id": "wallet",
+      "type": "solana_wallet",
+      "enabled": false,
+      "label": "Solana Wallet",
+      "allowlist": []
+    }
+  ]
+}

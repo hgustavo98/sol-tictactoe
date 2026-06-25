@@ -1,0 +1,12 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm install",
+  "buildCommand": "node scripts/build-vercel-combined.mjs",
+  "outputDirectory": "apps/web/dist",
+  "framework": null,
+  "rewrites": [
+    { "source": "/r8n4x2k7m9p3", "destination": "/r8n4x2k7m9p3/index.html" },
+    { "source": "/r8n4x2k7m9p3/:path*", "destination": "/r8n4x2k7m9p3/:path*" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

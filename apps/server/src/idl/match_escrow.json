@@ -1,0 +1,206 @@
+{
+  "address": "AcNc9UMCBBzuN8Yb54gspKEZ5h6zT1pFZCd4L89mHx2h",
+  "metadata": {
+    "name": "match_escrow",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "SOL TTT match escrow with house rake"
+  },
+  "instructions": [
+    {
+      "name": "initialize_config",
+      "discriminator": [208, 127, 21, 1, 194, 190, 196, 70],
+      "accounts": [
+        { "name": "authority", "writable": true, "signer": true },
+        { "name": "global_config", "writable": true },
+        { "name": "house_treasury", "writable": true },
+        { "name": "system_program" }
+      ],
+      "args": [
+        { "name": "house_rake_bps", "type": "u16" },
+        { "name": "fee_recipient", "type": "pubkey" },
+        { "name": "allowed_mints", "type": { "vec": "pubkey" } }
+      ]
+    },
+    {
+      "name": "create_match",
+      "discriminator": [107, 2, 184, 145, 70, 142, 17, 165],
+      "accounts": [
+        { "name": "player1", "writable": true, "signer": true },
+        { "name": "global_config" },
+        { "name": "match_account", "writable": true },
+        { "name": "escrow_vault", "writable": true },
+        { "name": "token_mint", "optional": true },
+        { "name": "player1_token_account", "optional": true, "writable": true },
+        { "name": "token_program" },
+        { "name": "system_program" },
+        { "name": "rent" }
+      ],
+      "args": [
+        { "name": "bet_amount", "type": "u64" },
+        { "name": "match_id", "type": { "array": ["u8", 16] } },
+        { "name": "rake_bps", "type": "u16" }
+      ]
+    },
+    {
+      "name": "join_match",
+      "discriminator": [244, 8, 47, 130, 192, 59, 179, 44],
+      "accounts": [
+        { "name": "player2", "writable": true, "signer": true },
+        { "name": "match_account", "writable": true },
+        { "name": "escrow_vault", "writable": true },
+        { "name": "player2_token_account", "optional": true, "writable": true },
+        { "name": "token_program" },
+        { "name": "system_program" }
+      ],
+      "args": []
+    },
+    {
+      "name": "fund_match",
+      "discriminator": [114, 40, 57, 162, 161, 146, 87, 223],
+      "accounts": [
+        { "name": "player", "writable": true, "signer": true },
+        { "name": "match_account", "writable": true },
+        { "name": "escrow_vault", "writable": true },
+        { "name": "player_token_account", "optional": true, "writable": true },
+        { "name": "token_program" },
+        { "name": "system_program" }
+      ],
+      "args": []
+    },
+    {
+      "name": "settle_match",
+      "discriminator": [71, 124, 117, 96, 191, 217, 116, 24],
+      "accounts": [
+        { "name": "authority", "signer": true },
+        { "name": "global_config" },
+        { "name": "match_account", "writable": true },
+        { "name": "winner", "writable": true },
+        { "name": "player1", "writable": true },
+        { "name": "player2", "writable": true },
+        { "name": "escrow_vault", "writable": true },
+        { "name": "fee_recipient", "writable": true },
+        { "name": "token_mint", "optional": true },
+        { "name": "winner_token_account", "optional": true, "writable": true },
+        { "name": "fee_recipient_token_account", "optional": true, "writable": true },
+        { "name": "player1_token_account", "optional": true, "writable": true },
+        { "name": "player2_token_account", "optional": true, "writable": true },
+        { "name": "token_program" },
+        { "name": "system_program" }
+      ],
+      "args": [{ "name": "is_draw", "type": "u8" }]
+    },
+    {
+      "name": "cancel_match",
+      "discriminator": [142, 136, 247, 45, 92, 112, 180, 83],
+      "accounts": [
+        { "name": "player1", "writable": true, "signer": true },
+        { "name": "global_config" },
+        { "name": "match_account", "writable": true },
+        { "name": "escrow_vault", "writable": true },
+        { "name": "player2", "writable": true },
+        { "name": "fee_recipient", "writable": true },
+        { "name": "player1_token_account", "optional": true, "writable": true },
+        { "name": "player2_token_account", "optional": true, "writable": true },
+        { "name": "fee_recipient_token_account", "optional": true, "writable": true },
+        { "name": "token_program" },
+        { "name": "system_program" }
+      ],
+      "args": []
+    },
+    {
+      "name": "close_waiting_match",
+      "discriminator": [8, 113, 146, 9, 168, 86, 172, 220],
+      "accounts": [
+        { "name": "authority", "writable": true, "signer": true },
+        { "name": "global_config" },
+        { "name": "match_account", "writable": true },
+        { "name": "escrow_vault", "writable": true },
+        { "name": "player1", "writable": true },
+        { "name": "player2", "writable": true },
+        { "name": "fee_recipient", "writable": true },
+        { "name": "player1_token_account", "optional": true, "writable": true },
+        { "name": "fee_recipient_token_account", "optional": true, "writable": true },
+        { "name": "token_program" },
+        { "name": "system_program" }
+      ],
+      "args": [{ "name": "force_forfeit", "type": "bool" }]
+    },
+    {
+      "name": "withdraw_treasury",
+      "discriminator": [40, 63, 122, 158, 144, 216, 83, 96],
+      "accounts": [
+        { "name": "authority", "writable": true, "signer": true },
+        { "name": "global_config" },
+        { "name": "house_treasury", "writable": true },
+        { "name": "treasury_token_account", "optional": true, "writable": true },
+        { "name": "authority_token_account", "optional": true, "writable": true },
+        { "name": "token_program" },
+        { "name": "system_program" }
+      ],
+      "args": [{ "name": "amount", "type": "u64" }]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "GlobalConfig",
+      "discriminator": [149, 8, 156, 202, 160, 252, 176, 217]
+    },
+    {
+      "name": "Match",
+      "discriminator": [236, 63, 169, 38, 15, 56, 196, 162]
+    }
+  ],
+  "errors": [
+    { "code": 6000, "name": "RakeTooHigh", "msg": "House rake exceeds maximum (20%)" },
+    { "code": 6001, "name": "TooManyMints", "msg": "Too many allowed mints" },
+    { "code": 6002, "name": "MintNotAllowed", "msg": "Token mint not in allowlist" },
+    { "code": 6003, "name": "InvalidBetAmount", "msg": "Invalid bet amount" },
+    { "code": 6004, "name": "InvalidMatchStatus", "msg": "Invalid match status for this action" },
+    { "code": 6005, "name": "CannotJoinOwnMatch", "msg": "Cannot join your own match" },
+    { "code": 6006, "name": "InvalidWinner", "msg": "Winner must be a match player" },
+    { "code": 6007, "name": "MathOverflow", "msg": "Math overflow" },
+    { "code": 6008, "name": "InsufficientFunds", "msg": "Insufficient treasury funds" },
+    { "code": 6009, "name": "InvalidFeeRecipient", "msg": "Invalid fee recipient" },
+    { "code": 6010, "name": "InvalidPlayer", "msg": "Player is not part of this match" },
+    { "code": 6011, "name": "AlreadyFunded", "msg": "Player already funded this match" }
+  ],
+  "types": [
+    {
+      "name": "GlobalConfig",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "authority", "type": "pubkey" },
+          { "name": "house_rake_bps", "type": "u16" },
+          { "name": "fee_recipient", "type": "pubkey" },
+          { "name": "house_treasury", "type": "pubkey" },
+          { "name": "allowed_mints", "type": { "vec": "pubkey" } },
+          { "name": "bump", "type": "u8" },
+          { "name": "treasury_bump", "type": "u8" }
+        ]
+      }
+    },
+    {
+      "name": "Match",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          { "name": "player1", "type": "pubkey" },
+          { "name": "player2", "type": "pubkey" },
+          { "name": "bet_amount", "type": "u64" },
+          { "name": "rake_bps", "type": "u16" },
+          { "name": "token_mint", "type": { "option": "pubkey" } },
+          { "name": "escrow_vault", "type": "pubkey" },
+          { "name": "status", "type": "u8" },
+          { "name": "winner", "type": "pubkey" },
+          { "name": "match_id", "type": { "array": ["u8", 16] } },
+          { "name": "player1_funded", "type": "bool" },
+          { "name": "player2_funded", "type": "bool" },
+          { "name": "created_at", "type": "i64" },
+          { "name": "bump", "type": "u8" }
+        ]
+      }
+    }
+  ]
+}

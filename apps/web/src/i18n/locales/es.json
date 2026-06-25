@@ -1,0 +1,196 @@
+{
+  "app": {
+    "title": "SOL TTT",
+    "tagline": "Solana · apuestas 1v1"
+  },
+  "language": { "label": "Idioma" },
+  "header": {
+    "solBalance": "Saldo SOL",
+    "solBalanceNetwork": "Saldo de la wallet en {{network}}",
+    "networkDevnet": "Devnet",
+    "networkTestnet": "Testnet",
+    "networkMainnet": "Mainnet",
+    "caLabel": "CA",
+    "caCopy": "Copiar dirección del contrato",
+    "caCopied": "Dirección copiada"
+  },
+  "wallet": {
+    "connect": "Conectar wallet",
+    "disconnect": "Desconectar",
+    "title": "Conectar wallet",
+    "description": "Elige una wallet de Solana para continuar",
+    "connectSubtitle": "Conecta una wallet en Solana para continuar",
+    "orConnect": "o conecta una wallet",
+    "selectWallet": "Seleccionar wallet",
+    "moreWallets": "Más wallets",
+    "back": "Volver",
+    "close": "Cerrar",
+    "badgeRecent": "Reciente",
+    "badgeDetected": "Detectada",
+    "connectError": "No se pudo conectar la wallet"
+  },
+  "footer": {
+    "devnet": "Devnet",
+    "rake": "Comisión {{percent}}%",
+    "mockEscrow": "Escrow simulado"
+  },
+  "profile": {
+    "player": "Jugador",
+    "guest": "Invitado",
+    "connected": "Conectado",
+    "offline": "Desconectado",
+    "rating": "Rating",
+    "wins": "G",
+    "losses": "P",
+    "draws": "E",
+    "status": "Estado",
+    "yourTurn": "Tu turno",
+    "white": "Blancas",
+    "black": "Negras",
+    "pot": "Bote",
+    "rake": "Comisión {{percent}}%",
+    "noMoves": "Sin jugadas aún",
+    "resign": "Rendirse",
+    "drawRefund": "Tablas — reembolso 50/50",
+    "youWon": "¡Ganaste!",
+    "youLost": "Perdiste.",
+    "ratingChange": "Rating {{delta}} → {{after}}",
+    "viewTx": "Ver transacción",
+    "mintReceipt": "Emitir recibo",
+    "backToLobby": "← Volver al lobby",
+    "hintRanked": "Elige una apuesta y pulsa Jugar 1v1, o busca oponente clasificado para subir en el ranking.",
+    "hintDefault": "Elige una apuesta en el centro y pulsa Jugar 1v1 para empezar."
+  },
+  "rating": {
+    "tiers": {
+      "grandmaster": "Gran maestro",
+      "master": "Maestro",
+      "expert": "Experto",
+      "intermediate": "Intermedio",
+      "rookie": "Novato"
+    }
+  },
+  "arena": {
+    "prev": "Arena anterior",
+    "next": "Arena siguiente",
+    "slide": "Arena {{n}}",
+    "badge1v1": "1v1",
+    "badgeCustom": "Personalizado",
+    "badgeRanked": "Clasificado",
+    "rankedTagline": "Emparejamiento por rating",
+    "customTitle": "Tu apuesta",
+    "customSubtitle": "Define tu entrada",
+    "entryFee": "Cuota de entrada",
+    "minSol": "Mín. {{min}} SOL",
+    "prize": "Premio",
+    "waiting": "Esperando: {{count}}",
+    "entry": "Entrada:",
+    "custom": "Personalizado"
+  },
+  "arenas": {
+    "starter": { "name": "Salón Inicial", "subtitle": "1v1 rápido" },
+    "park": { "name": "Mesas del Parque", "subtitle": "Partida casual" },
+    "classic": { "name": "Arena Clásica", "subtitle": "Apuestas equilibradas" },
+    "masters": { "name": "Salón Masters", "subtitle": "Mayor recompensa" },
+    "ranked": { "name": "Ladder Clasificado", "subtitle": "Sube en el ranking · apuesta mínima en SOL" }
+  },
+  "play": {
+    "title": "Jugar 1v1",
+    "starting": "Iniciando…",
+    "entry": "entrada {{amount}}",
+    "hint": "El ganador se lleva el bote menos la comisión · El perdedor no recibe nada"
+  },
+  "ranked": {
+    "find": "Buscar oponente clasificado",
+    "searching": "Buscando oponente clasificado…",
+    "matching": "Emparejando en ±{{radius}} de rating",
+    "waitSeconds": "{{seconds}}s",
+    "cancel": "Cancelar búsqueda",
+    "hint": "Te empareja con jugadores de rating similar — gana para subir, pierde para bajar"
+  },
+  "openTables": {
+    "title": "Mesas abiertas",
+    "stake": "apuesta {{amount}}",
+    "sortedByRating": "Ordenado por rating más cercano al tuyo ({{rating}})",
+    "empty": "No hay mesas en esta apuesta. Pulsa <1>Jugar 1v1</1> o <2>Buscar oponente clasificado</2>.",
+    "points": "{{rating}} pts",
+    "delta": "Δ{{gap}}",
+    "ranked": "Clasificado",
+    "evenMatch": "Partida equilibrada",
+    "join": "Unirse",
+    "otherStakes": "Otras apuestas ({{count}})"
+  },
+  "lobby": {
+    "connectWallet": "Conecta tu wallet para jugar 1v1 por SOL"
+  },
+  "waiting": {
+    "title": "Sala de espera",
+    "creator": "Esperando a que un oponente se una y deposite…",
+    "joiner": "Confirmando depósitos…",
+    "matchDetails": "Detalles de la partida",
+    "match": "Partida: {{id}}…",
+    "stake": "Apuesta: {{amount}} SOL",
+    "viewEscrow": "Ver escrow en Explorer ↗",
+    "goToBoard": "Ir al tablero",
+    "backToLobby": "Volver al lobby"
+  },
+  "game": {
+    "resignConfirm": "¿Rendirse de la partida?",
+    "resignConfirmHint": "Perderás la partida. Esta acción no se puede deshacer.",
+    "resignConfirmHintBet": "Perderás la partida y tu apuesta irá al oponente.",
+    "resignForfeitWarning": "Rendirse entrega tu apuesta al oponente.",
+    "resignCancel": "Cancelar",
+    "modalTitle": "Partida",
+    "modalDescription": "Tablero de ajedrez en ventana modal"
+  },
+  "damas3d": {
+    "yourTurn": "Tu turno",
+    "opponentTurn": "Turno del oponente",
+    "promotion": "Elige pieza de promoción"
+  },
+  "training": {
+    "start": "Modo entrenamiento",
+    "startShort": "Entreno",
+    "badge": "Entreno · vs CPU · sin apuestas",
+    "exit": "Volver",
+    "replay": "Jugar de nuevo",
+    "cpuTurn": "CPU pensando…",
+    "win": "¡Victoria!",
+    "lose": "Derrota",
+    "draw": "Empate",
+    "stalemate": "Ahogado",
+    "ended": "Fin de la partida",
+    "loadError": "No se pudo cargar el tablero. Inténtalo de nuevo."
+  },
+  "customize": {
+    "title": "Personalizar",
+    "subtitle": "Elige tablero y piezas — guardado en este dispositivo.",
+    "open": "Personalizar",
+    "close": "Cerrar",
+    "boardTitle": "Tablero",
+    "piecesTitle": "Piezas",
+    "boards": {
+      "classic": "Clásico",
+      "midnight": "Medianoche",
+      "sunset": "Atardecer",
+      "neon": "Arena Neón",
+      "marble": "Mármol"
+    },
+    "pieces": {
+      "classic": "Clásico",
+      "goldOnyx": "Oro y Ónix",
+      "neon": "Neón",
+      "wood": "Madera",
+      "crystal": "Cristal"
+    }
+  },
+  "errors": {
+    "bet": {
+      "invalid": "Cantidad inválida",
+      "min": "Mínimo {{min}} SOL (cubre comisiones de red)",
+      "max": "Máximo {{max}} SOL"
+    },
+    "createMatch": "Error al crear partida",
+    "join": "Error al unirse"
+  }
+}

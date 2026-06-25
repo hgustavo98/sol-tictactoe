@@ -1,0 +1,181 @@
+{
+  "app": {
+    "title": "SOL TTT",
+    "tagline": "Solana · mises 1v1"
+  },
+  "language": { "label": "Langue" },
+  "header": {
+    "solBalance": "Solde SOL",
+    "solBalanceNetwork": "Solde du portefeuille sur {{network}}",
+    "networkDevnet": "Devnet",
+    "networkTestnet": "Testnet",
+    "networkMainnet": "Mainnet",
+    "caLabel": "CA",
+    "caCopy": "Copier l'adresse du contrat",
+    "caCopied": "Adresse copiée"
+  },
+  "footer": {
+    "devnet": "Devnet",
+    "rake": "Commission {{percent}}%",
+    "mockEscrow": "Escrow simulé"
+  },
+  "profile": {
+    "player": "Joueur",
+    "guest": "Invité",
+    "connected": "Connecté",
+    "offline": "Hors ligne",
+    "rating": "Classement",
+    "wins": "V",
+    "losses": "D",
+    "draws": "N",
+    "status": "Statut",
+    "yourTurn": "À vous",
+    "white": "Blancs",
+    "black": "Noirs",
+    "pot": "Cagnotte",
+    "rake": "Commission {{percent}}%",
+    "noMoves": "Aucun coup joué",
+    "resign": "Abandonner",
+    "drawRefund": "Nulle — remboursement 50/50",
+    "youWon": "Vous avez gagné !",
+    "youLost": "Vous avez perdu.",
+    "ratingChange": "Classement {{delta}} → {{after}}",
+    "viewTx": "Voir la transaction",
+    "mintReceipt": "Émettre un reçu",
+    "backToLobby": "← Retour au lobby",
+    "hintRanked": "Choisissez une mise et appuyez sur Jouer 1v1, ou trouvez un adversaire classé pour grimper au classement.",
+    "hintDefault": "Choisissez une mise au centre, puis appuyez sur Jouer 1v1 pour commencer."
+  },
+  "rating": {
+    "tiers": {
+      "grandmaster": "Grand maître",
+      "master": "Maître",
+      "expert": "Expert",
+      "intermediate": "Intermédiaire",
+      "rookie": "Débutant"
+    }
+  },
+  "arena": {
+    "prev": "Arène précédente",
+    "next": "Arène suivante",
+    "slide": "Arène {{n}}",
+    "badge1v1": "1v1",
+    "badgeCustom": "Personnalisé",
+    "badgeRanked": "Classé",
+    "rankedTagline": "Matchmaking par rating",
+    "customTitle": "Vos mises",
+    "customSubtitle": "Définissez votre entrée",
+    "entryFee": "Frais d'entrée",
+    "minSol": "Min. {{min}} SOL",
+    "prize": "Gain",
+    "waiting": "En attente : {{count}}",
+    "entry": "Entrée :",
+    "custom": "Personnalisé"
+  },
+  "arenas": {
+    "starter": { "name": "Salle Débutant", "subtitle": "1v1 rapide" },
+    "park": { "name": "Tables du Parc", "subtitle": "Partie décontractée" },
+    "classic": { "name": "Arène Classique", "subtitle": "Mises équilibrées" },
+    "masters": { "name": "Salon Masters", "subtitle": "Récompense élevée" },
+    "ranked": { "name": "Ladder Classé", "subtitle": "Grimpez au classement · mise minimale en SOL" }
+  },
+  "play": {
+    "title": "Jouer 1v1",
+    "starting": "Démarrage…",
+    "entry": "entrée {{amount}}",
+    "hint": "Le gagnant prend la cagnotte moins la commission · Le perdant ne reçoit rien"
+  },
+  "ranked": {
+    "find": "Trouver un adversaire classé",
+    "searching": "Recherche d'adversaire classé…",
+    "matching": "Appariement dans ±{{radius}} de classement",
+    "waitSeconds": "{{seconds}}s",
+    "cancel": "Annuler la recherche",
+    "hint": "Vous apparie avec des joueurs de niveau proche — gagnez pour monter, perdez pour descendre"
+  },
+  "openTables": {
+    "title": "Tables ouvertes",
+    "stake": "mise {{amount}}",
+    "sortedByRating": "Trié par classement le plus proche du vôtre ({{rating}})",
+    "empty": "Aucune table à cette mise. Appuyez sur <1>Jouer 1v1</1> ou <2>Trouver un adversaire classé</2>.",
+    "points": "{{rating}} pts",
+    "delta": "Δ{{gap}}",
+    "ranked": "Classé",
+    "evenMatch": "Match équilibré",
+    "join": "Rejoindre",
+    "otherStakes": "Autres mises ({{count}})"
+  },
+  "lobby": {
+    "connectWallet": "Connectez votre portefeuille pour jouer 1v1 en SOL"
+  },
+  "waiting": {
+    "title": "Salle d'attente",
+    "creator": "En attente d'un adversaire pour rejoindre et déposer…",
+    "joiner": "Confirmation des dépôts…",
+    "matchDetails": "Détails de la partie",
+    "match": "Partie : {{id}}…",
+    "stake": "Mise : {{amount}} SOL",
+    "viewEscrow": "Voir l'escrow sur Explorer ↗",
+    "goToBoard": "Aller à l'échiquier",
+    "backToLobby": "Retour au lobby"
+  },
+  "game": {
+    "resignConfirm": "Abandonner la partie ?",
+    "resignConfirmHint": "Vous perdrez la partie. Cette action est irréversible.",
+    "resignConfirmHintBet": "Vous perdrez la partie et votre mise ira à l'adversaire.",
+    "resignForfeitWarning": "Abandonner remet votre mise à l'adversaire.",
+    "resignCancel": "Annuler",
+    "modalTitle": "Partie",
+    "modalDescription": "Échiquier dans une fenêtre modale"
+  },
+  "damas3d": {
+    "yourTurn": "À vous",
+    "opponentTurn": "Tour de l'adversaire",
+    "promotion": "Choisir la pièce de promotion"
+  },
+  "training": {
+    "start": "Mode entraînement",
+    "startShort": "Entraîn.",
+    "badge": "Entraînement · vs CPU · sans mises",
+    "exit": "Retour",
+    "replay": "Rejouer",
+    "cpuTurn": "CPU réfléchit…",
+    "win": "Victoire !",
+    "lose": "Défaite",
+    "draw": "Nulle",
+    "stalemate": "Pat",
+    "ended": "Fin de partie",
+    "loadError": "Impossible de charger l'échiquier. Réessayez."
+  },
+  "customize": {
+    "title": "Personnaliser",
+    "subtitle": "Choisissez plateau et pièces — enregistré sur cet appareil.",
+    "open": "Personnaliser",
+    "close": "Fermer",
+    "boardTitle": "Plateau",
+    "piecesTitle": "Pièces",
+    "boards": {
+      "classic": "Classique",
+      "midnight": "Minuit",
+      "sunset": "Coucher de soleil",
+      "neon": "Arène Néon",
+      "marble": "Marbre"
+    },
+    "pieces": {
+      "classic": "Classique",
+      "goldOnyx": "Or & Onyx",
+      "neon": "Néon",
+      "wood": "Bois",
+      "crystal": "Cristal"
+    }
+  },
+  "errors": {
+    "bet": {
+      "invalid": "Montant invalide",
+      "min": "Minimum {{min}} SOL (couvre les frais réseau)",
+      "max": "Maximum {{max}} SOL"
+    },
+    "createMatch": "Échec de création de partie",
+    "join": "Échec de connexion"
+  }
+}

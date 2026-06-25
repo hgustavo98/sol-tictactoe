@@ -1,0 +1,181 @@
+{
+  "app": {
+    "title": "SOL TTT",
+    "tagline": "Solana · 1v1 Einsätze"
+  },
+  "language": { "label": "Sprache" },
+  "header": {
+    "solBalance": "SOL-Guthaben",
+    "solBalanceNetwork": "Wallet-Guthaben im {{network}}",
+    "networkDevnet": "Devnet",
+    "networkTestnet": "Testnet",
+    "networkMainnet": "Mainnet",
+    "caLabel": "CA",
+    "caCopy": "Vertragsadresse kopieren",
+    "caCopied": "Adresse kopiert"
+  },
+  "footer": {
+    "devnet": "Devnet",
+    "rake": "Gebühr {{percent}}%",
+    "mockEscrow": "Mock-Escrow"
+  },
+  "profile": {
+    "player": "Spieler",
+    "guest": "Gast",
+    "connected": "Verbunden",
+    "offline": "Offline",
+    "rating": "Rating",
+    "wins": "S",
+    "losses": "N",
+    "draws": "R",
+    "status": "Status",
+    "yourTurn": "Du bist dran",
+    "white": "Weiß",
+    "black": "Schwarz",
+    "pot": "Pot",
+    "rake": "Gebühr {{percent}}%",
+    "noMoves": "Noch keine Züge",
+    "resign": "Aufgeben",
+    "drawRefund": "Remis — 50/50 Rückerstattung",
+    "youWon": "Du hast gewonnen!",
+    "youLost": "Du hast verloren.",
+    "ratingChange": "Rating {{delta}} → {{after}}",
+    "viewTx": "Transaktion ansehen",
+    "mintReceipt": "Quittung prägen",
+    "backToLobby": "← Zurück zur Lobby",
+    "hintRanked": "Wähle einen Einsatz und tippe auf 1v1 spielen, oder finde einen Ranked-Gegner zum Aufsteigen.",
+    "hintDefault": "Wähle einen Einsatz in der Mitte und tippe auf 1v1 spielen zum Starten."
+  },
+  "rating": {
+    "tiers": {
+      "grandmaster": "Großmeister",
+      "master": "Meister",
+      "expert": "Experte",
+      "intermediate": "Fortgeschritten",
+      "rookie": "Anfänger"
+    }
+  },
+  "arena": {
+    "prev": "Vorherige Arena",
+    "next": "Nächste Arena",
+    "slide": "Arena {{n}}",
+    "badge1v1": "1v1",
+    "badgeCustom": "Individuell",
+    "badgeRanked": "Ranked",
+    "rankedTagline": "Rating-basiertes Matchmaking",
+    "customTitle": "Dein Einsatz",
+    "customSubtitle": "Eigenen Einsatz festlegen",
+    "entryFee": "Einsatzgebühr",
+    "minSol": "Min. {{min}} SOL",
+    "prize": "Preis",
+    "waiting": "Wartend: {{count}}",
+    "entry": "Einsatz:",
+    "custom": "Individuell"
+  },
+  "arenas": {
+    "starter": { "name": "Starter-Halle", "subtitle": "Schnelles 1v1" },
+    "park": { "name": "Parktische", "subtitle": "Casual-Match" },
+    "classic": { "name": "Klassische Arena", "subtitle": "Ausgewogene Einsätze" },
+    "masters": { "name": "Masters-Lounge", "subtitle": "Höhere Belohnung" },
+    "ranked": { "name": "Ranked-Ladder", "subtitle": "Steige im Ranking · Mindesteinsatz in SOL" }
+  },
+  "play": {
+    "title": "1v1 spielen",
+    "starting": "Startet…",
+    "entry": "Einsatz {{amount}}",
+    "hint": "Gewinner erhält den Pot minus Gebühr · Verlierer erhält nichts"
+  },
+  "ranked": {
+    "find": "Ranked-Gegner finden",
+    "searching": "Suche Ranked-Gegner…",
+    "matching": "Matching innerhalb ±{{radius}} Rating",
+    "waitSeconds": "{{seconds}}s",
+    "cancel": "Suche abbrechen",
+    "hint": "Paart dich mit Spielern ähnlichen Ratings — gewinne zum Aufsteigen, verliere zum Absteigen"
+  },
+  "openTables": {
+    "title": "Offene Tische",
+    "stake": "Einsatz {{amount}}",
+    "sortedByRating": "Sortiert nach nächstem Rating zu dir ({{rating}})",
+    "empty": "Keine Tische bei diesem Einsatz. Tippe auf <1>1v1 spielen</1> oder <2>Ranked-Gegner finden</2>.",
+    "points": "{{rating}} Pkt",
+    "delta": "Δ{{gap}}",
+    "ranked": "Ranked",
+    "evenMatch": "Ausgeglichenes Match",
+    "join": "Beitreten",
+    "otherStakes": "Andere Einsätze ({{count}})"
+  },
+  "lobby": {
+    "connectWallet": "Wallet verbinden, um 1v1 um SOL zu spielen"
+  },
+  "waiting": {
+    "title": "Warteraum",
+    "creator": "Warte auf Gegner zum Beitreten und Einzahlen…",
+    "joiner": "Einzahlungen werden bestätigt…",
+    "matchDetails": "Match-Details",
+    "match": "Match: {{id}}…",
+    "stake": "Einsatz: {{amount}} SOL",
+    "viewEscrow": "Escrow im Explorer ansehen ↗",
+    "goToBoard": "Zum Brett",
+    "backToLobby": "Zurück zur Lobby"
+  },
+  "game": {
+    "resignConfirm": "Partie aufgeben?",
+    "resignConfirmHint": "Du verlierst die Partie. Diese Aktion kann nicht rückgängig gemacht werden.",
+    "resignConfirmHintBet": "Du verlierst die Partie und dein Einsatz geht an den Gegner.",
+    "resignForfeitWarning": "Aufgeben gibt deinen Einsatz an den Gegner.",
+    "resignCancel": "Abbrechen",
+    "modalTitle": "Partie",
+    "modalDescription": "Schachbrett im Modal"
+  },
+  "damas3d": {
+    "yourTurn": "Du bist dran",
+    "opponentTurn": "Gegner am Zug",
+    "promotion": "Umwandlungsfigur wählen"
+  },
+  "training": {
+    "start": "Trainingsmodus",
+    "startShort": "Training",
+    "badge": "Training · vs CPU · ohne Einsätze",
+    "exit": "Zurück",
+    "replay": "Nochmal",
+    "cpuTurn": "CPU denkt…",
+    "win": "Sieg!",
+    "lose": "Niederlage",
+    "draw": "Remis",
+    "stalemate": "Patt",
+    "ended": "Spielende",
+    "loadError": "Brett konnte nicht geladen werden. Bitte erneut versuchen."
+  },
+  "customize": {
+    "title": "Anpassen",
+    "subtitle": "Brett und Figuren wählen — auf diesem Gerät gespeichert.",
+    "open": "Anpassen",
+    "close": "Schließen",
+    "boardTitle": "Brett",
+    "piecesTitle": "Figuren",
+    "boards": {
+      "classic": "Klassisch",
+      "midnight": "Mitternacht",
+      "sunset": "Sonnenuntergang",
+      "neon": "Neon-Arena",
+      "marble": "Marmor"
+    },
+    "pieces": {
+      "classic": "Klassisch",
+      "goldOnyx": "Gold & Onyx",
+      "neon": "Neon",
+      "wood": "Holz",
+      "crystal": "Kristall"
+    }
+  },
+  "errors": {
+    "bet": {
+      "invalid": "Ungültiger Betrag",
+      "min": "Minimum {{min}} SOL (deckt Netzwerkgebühren)",
+      "max": "Maximum {{max}} SOL"
+    },
+    "createMatch": "Partie konnte nicht erstellt werden",
+    "join": "Beitritt fehlgeschlagen"
+  }
+}

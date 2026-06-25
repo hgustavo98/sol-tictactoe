@@ -1,0 +1,6 @@
+Chess piece 3D models (pawn, rook, knight, bishop, queen, king).
+
+Source: https://github.com/joshwrn/3d-chess (public/*.gltf)
+Integrated via ext/models in this project — Blender export with embedded geometry.
+
+Previous Sketchfab assets (CC-BY-SA-4.0) were replaced by the models above.

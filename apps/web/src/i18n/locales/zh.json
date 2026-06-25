@@ -1,0 +1,181 @@
+{
+  "app": {
+    "title": "SOL TTT",
+    "tagline": "Solana · 1v1 押注"
+  },
+  "language": { "label": "语言" },
+  "header": {
+    "solBalance": "SOL 余额",
+    "solBalanceNetwork": "{{network}} 上的钱包余额",
+    "networkDevnet": "Devnet",
+    "networkTestnet": "Testnet",
+    "networkMainnet": "Mainnet",
+    "caLabel": "CA",
+    "caCopy": "复制合约地址",
+    "caCopied": "地址已复制"
+  },
+  "footer": {
+    "devnet": "Devnet",
+    "rake": "抽成 {{percent}}%",
+    "mockEscrow": "模拟托管"
+  },
+  "profile": {
+    "player": "玩家",
+    "guest": "访客",
+    "connected": "已连接",
+    "offline": "离线",
+    "rating": "积分",
+    "wins": "胜",
+    "losses": "负",
+    "draws": "平",
+    "status": "状态",
+    "yourTurn": "轮到你了",
+    "white": "白方",
+    "black": "黑方",
+    "pot": "奖池",
+    "rake": "抽成 {{percent}}%",
+    "noMoves": "暂无走棋",
+    "resign": "认输",
+    "drawRefund": "和棋 — 50/50 退款",
+    "youWon": "你赢了！",
+    "youLost": "你输了。",
+    "ratingChange": "积分 {{delta}} → {{after}}",
+    "viewTx": "查看交易",
+    "mintReceipt": "铸造凭证",
+    "backToLobby": "← 返回大厅",
+    "hintRanked": "选择押注后点击 1v1 对战，或寻找排位对手提升排名。",
+    "hintDefault": "在中心选择押注，然后点击 1v1 对战开始比赛。"
+  },
+  "rating": {
+    "tiers": {
+      "grandmaster": "特级大师",
+      "master": "大师",
+      "expert": "专家",
+      "intermediate": "中级",
+      "rookie": "新手"
+    }
+  },
+  "arena": {
+    "prev": "上一个场地",
+    "next": "下一个场地",
+    "slide": "场地 {{n}}",
+    "badge1v1": "1v1",
+    "badgeCustom": "自定义",
+    "badgeRanked": "排位",
+    "rankedTagline": "按评分匹配",
+    "customTitle": "自定义押注",
+    "customSubtitle": "设置入场费",
+    "entryFee": "入场费",
+    "minSol": "最低 {{min}} SOL",
+    "prize": "奖金",
+    "waiting": "等待中: {{count}}",
+    "entry": "入场:",
+    "custom": "自定义"
+  },
+  "arenas": {
+    "starter": { "name": "新手厅", "subtitle": "快速 1v1" },
+    "park": { "name": "公园棋桌", "subtitle": "休闲对局" },
+    "classic": { "name": "经典竞技场", "subtitle": "均衡押注" },
+    "masters": { "name": "大师休息室", "subtitle": "更高奖励" },
+    "ranked": { "name": "排位天梯", "subtitle": "提升排名 · 最低 SOL 押注" }
+  },
+  "play": {
+    "title": "1v1 对战",
+    "starting": "启动中…",
+    "entry": "入场 {{amount}}",
+    "hint": "赢家获得奖池扣除抽成 · 输家一无所获"
+  },
+  "ranked": {
+    "find": "寻找排位对手",
+    "searching": "正在寻找排位对手…",
+    "matching": "在 ±{{radius}} 积分范围内匹配",
+    "waitSeconds": "{{seconds}}秒",
+    "cancel": "取消搜索",
+    "hint": "匹配积分相近的玩家 — 赢则上升，输则下降"
+  },
+  "openTables": {
+    "title": "开放牌桌",
+    "stake": "押注 {{amount}}",
+    "sortedByRating": "按与你积分最接近排序 ({{rating}})",
+    "empty": "该押注暂无牌桌。点击 <1>1v1 对战</1> 或 <2>寻找排位对手</2>。",
+    "points": "{{rating}} 分",
+    "delta": "差{{gap}}",
+    "ranked": "排位",
+    "evenMatch": "势均力敌",
+    "join": "加入",
+    "otherStakes": "其他押注 ({{count}})"
+  },
+  "lobby": {
+    "connectWallet": "连接钱包以 SOL 进行 1v1 对战"
+  },
+  "waiting": {
+    "title": "等候室",
+    "creator": "等待对手加入并注资…",
+    "joiner": "正在确认注资…",
+    "matchDetails": "对局详情",
+    "match": "对局: {{id}}…",
+    "stake": "押注: {{amount}} SOL",
+    "viewEscrow": "在 Explorer 查看托管 ↗",
+    "goToBoard": "前往棋盘",
+    "backToLobby": "返回大厅"
+  },
+  "game": {
+    "resignConfirm": "确定要认输吗？",
+    "resignConfirmHint": "你将输掉本局，此操作无法撤销。",
+    "resignConfirmHintBet": "你将输掉本局，赌注将归对手所有。",
+    "resignForfeitWarning": "认输将把赌注交给对手。",
+    "resignCancel": "取消",
+    "modalTitle": "对局",
+    "modalDescription": "模态窗口中的棋盘"
+  },
+  "damas3d": {
+    "yourTurn": "轮到你了",
+    "opponentTurn": "对手回合",
+    "promotion": "选择升变棋子"
+  },
+  "training": {
+    "start": "训练模式",
+    "startShort": "训练",
+    "badge": "训练 · 对战 CPU · 无下注",
+    "exit": "返回",
+    "replay": "再来一局",
+    "cpuTurn": "CPU 思考中…",
+    "win": "胜利！",
+    "lose": "失败",
+    "draw": "和棋",
+    "stalemate": "逼和",
+    "ended": "对局结束",
+    "loadError": "无法加载棋盘，请重试。"
+  },
+  "customize": {
+    "title": "个性化",
+    "subtitle": "选择棋盘和棋子风格 — 保存在本设备。",
+    "open": "个性化",
+    "close": "关闭",
+    "boardTitle": "棋盘",
+    "piecesTitle": "棋子",
+    "boards": {
+      "classic": "经典",
+      "midnight": "午夜",
+      "sunset": "日落",
+      "neon": "霓虹竞技场",
+      "marble": "大理石"
+    },
+    "pieces": {
+      "classic": "经典",
+      "goldOnyx": "金与玛瑙",
+      "neon": "霓虹",
+      "wood": "木质",
+      "crystal": "水晶"
+    }
+  },
+  "errors": {
+    "bet": {
+      "invalid": "无效金额",
+      "min": "最低 {{min}} SOL（覆盖网络费用）",
+      "max": "最高 {{max}} SOL"
+    },
+    "createMatch": "创建对局失败",
+    "join": "加入失败"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "sol-ttt",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w @sol-tictactoe/server\" \"npm run dev -w @sol-tictactoe/web\" \"npm run dev -w @sol-tictactoe/admin\"",
+    "dev:game": "concurrently \"npm run dev -w @sol-tictactoe/server\" \"npm run dev -w @sol-tictactoe/web\"",
+    "dev:admin": "concurrently \"npm run dev -w @sol-tictactoe/server\" \"npm run dev -w @sol-tictactoe/admin\"",
+    "setup:google-oauth": "node scripts/set-google-oauth.mjs",
+    "google:oauth:origins": "node scripts/print-google-oauth-origins.mjs",
+    "build": "npm run build -w @sol-tictactoe/shared && npm run build -w @sol-tictactoe/server && npm run build -w @sol-tictactoe/web && npm run build -w @sol-tictactoe/admin",
+    "build:vercel": "node scripts/build-vercel-combined.mjs",
+    "fetch:damas-models": "node scripts/fetch-damas-models.mjs",
+    "launch:deploy": "node scripts/launch-deploy.mjs",
+    "launch:deploy:mainnet": "node scripts/launch-deploy.mjs mainnet-beta",
+    "smoke:escrow": "node scripts/smoke-escrow.mjs",
+    "smoke:escrow:mainnet": "node scripts/smoke-escrow-mainnet.mjs",
+    "sync:program-id": "node scripts/sync-program-id.mjs",
+    "anchor:build": "anchor build",
+    "anchor:deploy": "anchor deploy"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "overrides": {
+    "@solana/errors": "6.9.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}

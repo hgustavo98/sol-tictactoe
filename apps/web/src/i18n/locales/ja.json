@@ -1,0 +1,181 @@
+{
+  "app": {
+    "title": "SOL TTT",
+    "tagline": "Solana · 1v1 賭け"
+  },
+  "language": { "label": "言語" },
+  "header": {
+    "solBalance": "SOL残高",
+    "solBalanceNetwork": "{{network}}のウォレット残高",
+    "networkDevnet": "Devnet",
+    "networkTestnet": "Testnet",
+    "networkMainnet": "Mainnet",
+    "caLabel": "CA",
+    "caCopy": "コントラクトアドレスをコピー",
+    "caCopied": "アドレスをコピーしました"
+  },
+  "footer": {
+    "devnet": "Devnet",
+    "rake": "手数料 {{percent}}%",
+    "mockEscrow": "モックエスクロー"
+  },
+  "profile": {
+    "player": "プレイヤー",
+    "guest": "ゲスト",
+    "connected": "接続済み",
+    "offline": "オフライン",
+    "rating": "レーティング",
+    "wins": "勝",
+    "losses": "敗",
+    "draws": "分",
+    "status": "状態",
+    "yourTurn": "あなたの番",
+    "white": "白",
+    "black": "黒",
+    "pot": "ポット",
+    "rake": "手数料 {{percent}}%",
+    "noMoves": "まだ指し手なし",
+    "resign": "投了",
+    "drawRefund": "引き分け — 50/50返金",
+    "youWon": "勝利！",
+    "youLost": "敗北しました。",
+    "ratingChange": "レーティング {{delta}} → {{after}}",
+    "viewTx": "トランザクションを見る",
+    "mintReceipt": "レシートを発行",
+    "backToLobby": "← ロビーに戻る",
+    "hintRanked": "賭け金を選び「1v1でプレイ」またはランクマッチで対戦してランキングを上げましょう。",
+    "hintDefault": "中央で賭け金を選び、「1v1でプレイ」を押して開始してください。"
+  },
+  "rating": {
+    "tiers": {
+      "grandmaster": "グランドマスター",
+      "master": "マスター",
+      "expert": "エキスパート",
+      "intermediate": "中級",
+      "rookie": "ルーキー"
+    }
+  },
+  "arena": {
+    "prev": "前のアリーナ",
+    "next": "次のアリーナ",
+    "slide": "アリーナ {{n}}",
+    "badge1v1": "1v1",
+    "badgeCustom": "カスタム",
+    "badgeRanked": "ランク",
+    "rankedTagline": "レーティングマッチング",
+    "customTitle": "カスタム賭け",
+    "customSubtitle": "エントリー料を設定",
+    "entryFee": "エントリー料",
+    "minSol": "最低 {{min}} SOL",
+    "prize": "賞金",
+    "waiting": "待機中: {{count}}",
+    "entry": "エントリー:",
+    "custom": "カスタム"
+  },
+  "arenas": {
+    "starter": { "name": "スターターホール", "subtitle": "クイック1v1" },
+    "park": { "name": "パークテーブル", "subtitle": "カジュアルマッチ" },
+    "classic": { "name": "クラシックアリーナ", "subtitle": "バランス賭け" },
+    "masters": { "name": "マスターズラウンジ", "subtitle": "高額報酬" },
+    "ranked": { "name": "ランク戦ラダー", "subtitle": "ランキングを上げる · 最低SOL賭け" }
+  },
+  "play": {
+    "title": "1v1でプレイ",
+    "starting": "開始中…",
+    "entry": "エントリー {{amount}}",
+    "hint": "勝者が手数料差し引き後のポットを獲得 · 敗者は何も得られません"
+  },
+  "ranked": {
+    "find": "ランクマッチを探す",
+    "searching": "ランクマッチ相手を検索中…",
+    "matching": "レーティング ±{{radius}} 以内でマッチング",
+    "waitSeconds": "{{seconds}}秒",
+    "cancel": "検索をキャンセル",
+    "hint": "近いレーティングのプレイヤーとペア — 勝てば上昇、負ければ下降"
+  },
+  "openTables": {
+    "title": "オープンテーブル",
+    "stake": "賭け {{amount}}",
+    "sortedByRating": "あなたのレーティング ({{rating}}) に近い順",
+    "empty": "この賭け金のテーブルはありません。<1>1v1でプレイ</1>または<2>ランクマッチを探す</2>を押してください。",
+    "points": "{{rating}} pt",
+    "delta": "Δ{{gap}}",
+    "ranked": "ランク",
+    "evenMatch": "実力均衡",
+    "join": "参加",
+    "otherStakes": "他の賭け金 ({{count}})"
+  },
+  "lobby": {
+    "connectWallet": "ウォレットを接続してSOLで1v1プレイ"
+  },
+  "waiting": {
+    "title": "待機室",
+    "creator": "対戦相手の参加と入金を待っています…",
+    "joiner": "入金を確認中…",
+    "matchDetails": "マッチ詳細",
+    "match": "マッチ: {{id}}…",
+    "stake": "賭け: {{amount}} SOL",
+    "viewEscrow": "Explorerでエスクローを見る ↗",
+    "goToBoard": "盤面へ",
+    "backToLobby": "ロビーに戻る"
+  },
+  "game": {
+    "resignConfirm": "この対局を投了しますか？",
+    "resignConfirmHint": "対局に敗北します。この操作は取り消せません。",
+    "resignConfirmHintBet": "対局に敗北し、賭け金は相手に渡ります。",
+    "resignForfeitWarning": "投了すると賭け金は相手に渡ります。",
+    "resignCancel": "キャンセル",
+    "modalTitle": "対局",
+    "modalDescription": "モーダル内のチェス盤"
+  },
+  "damas3d": {
+    "yourTurn": "あなたの番",
+    "opponentTurn": "相手の番です",
+    "promotion": "昇格する駒を選んでください"
+  },
+  "training": {
+    "start": "練習モード",
+    "startShort": "練習",
+    "badge": "練習 · vs CPU · 賭けなし",
+    "exit": "戻る",
+    "replay": "もう一度",
+    "cpuTurn": "CPU思考中…",
+    "win": "勝利！",
+    "lose": "敗北",
+    "draw": "引き分け",
+    "stalemate": "ステイルメイト",
+    "ended": "終局",
+    "loadError": "盤面を読み込めませんでした。もう一度お試しください。"
+  },
+  "customize": {
+    "title": "カスタマイズ",
+    "subtitle": "盤と駒のスタイルを選択 — この端末に保存されます。",
+    "open": "カスタマイズ",
+    "close": "閉じる",
+    "boardTitle": "盤",
+    "piecesTitle": "駒",
+    "boards": {
+      "classic": "クラシック",
+      "midnight": "ミッドナイト",
+      "sunset": "サンセット",
+      "neon": "ネオンアリーナ",
+      "marble": "マーブル"
+    },
+    "pieces": {
+      "classic": "クラシック",
+      "goldOnyx": "ゴールド＆オニキス",
+      "neon": "ネオン",
+      "wood": "ウッド",
+      "crystal": "クリスタル"
+    }
+  },
+  "errors": {
+    "bet": {
+      "invalid": "無効な金額",
+      "min": "最低 {{min}} SOL（ネットワーク手数料をカバー）",
+      "max": "最大 {{max}} SOL"
+    },
+    "createMatch": "マッチの作成に失敗",
+    "join": "参加に失敗"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "extends": [
+    "development"
+  ],
+  "hints": {
+    "axe/aria": [
+      "default",
+      {
+        "aria-valid-attr-value": "off",
+        "aria-roles": "off",
+        "aria-required-children": "off"
+      }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "backdrop-filter",
+          "scrollbar-width",
+          "scrollbar-width: thin",
+          "scrollbar-color",
+          "scrollbar-width: none",
+          "border: 1px solid color-mix(in srgb, var(--tier-accent) 55%, transparent)"
+        ]
+      }
+    ],
+    "no-inline-styles": "off",
+    "axe/forms": [
+      "default",
+      {
+        "label": "off"
+      }
+    ]
+  }
+}
