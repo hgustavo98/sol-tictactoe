@@ -1,5 +1,7 @@
 # SOL Tic Tac Toe
 
+**Live:** [sol-ttt.vercel.app](https://sol-ttt.vercel.app)
+
 **Bet SOL. Play Tic Tac Toe. Win the Pot.**
 
 PvP tic tac toe with Solana wagers, real-time gameplay, and on-chain escrow with house rake.
