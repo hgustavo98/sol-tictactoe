@@ -4,7 +4,7 @@
  * Usage:
  *   node scripts/smoke-escrow.mjs
  *   API_URL=http://127.0.0.1:3000 node scripts/smoke-escrow.mjs
- *   API_URL=https://api.sol-ttt.xyz SMOKE_PROFILE=mainnet node scripts/smoke-escrow.mjs
+ *   API_URL=https://sol-ttt-api.onrender.com SMOKE_PROFILE=mainnet node scripts/smoke-escrow.mjs
  */
 const apiBase = (process.env.API_URL ?? "http://127.0.0.1:3000").replace(/\/$/, "");
 const profile = (process.env.SMOKE_PROFILE ?? "default").toLowerCase();

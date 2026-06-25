@@ -1,6 +1,6 @@
 /**
  * Builds the game + admin into a single Vercel output (apps/web/dist).
- * Admin: https://sol-ttt.xyz/<secret-path>/
+ * Admin: https://<your-project>.vercel.app/<secret-path>/
  *
  * VITE_ADMIN_BASE_PATH in Vercel must match root vercel.json rewrites.
  */

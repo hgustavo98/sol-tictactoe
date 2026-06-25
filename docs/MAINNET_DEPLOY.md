@@ -39,8 +39,8 @@ Envie ≥ 0.1 SOL mainnet para a pubkey da authority (gas de settle).
 ## 5. Verificar
 
 ```bash
-API_URL=https://api.sol-ttt.xyz npm run smoke:escrow
-API_URL=https://api.sol-ttt.xyz npm run smoke:escrow:mainnet
+API_URL=https://sol-ttt-api.onrender.com npm run smoke:escrow
+API_URL=https://sol-ttt-api.onrender.com npm run smoke:escrow:mainnet
 ```
 
 Siga [GO_LIVE_CHECKLIST.md](./GO_LIVE_CHECKLIST.md) para o teste de receita (ranked 0,1 SOL E2E).

@@ -14,15 +14,15 @@ Use após deploy Render + Vercel + Anchor mainnet.
 - [ ] `GET /health` → `{ ok: true }`
 - [ ] Rate limits e guest sessions usam Mongo (`rate_limits`, `guest_sessions`) — ver [SECURITY.md](./SECURITY.md)
 - [ ] `TRUST_PROXY=true` no Render (atrás de proxy)
-- [ ] `npm run smoke:escrow` com `API_URL=https://api.sol-ttt.xyz` passa
-- [ ] `npm run smoke:escrow:mainnet` com `API_URL=https://api.sol-ttt.xyz` passa (após deploy mainnet)
+- [ ] `npm run smoke:escrow` com `API_URL=https://sol-ttt-api.onrender.com` passa
+- [ ] `npm run smoke:escrow:mainnet` com `API_URL=https://sol-ttt-api.onrender.com` passa (após deploy mainnet)
 - [ ] `MOCK_ESCROW=false`
 - [ ] `MONGODB_URI` configurado (local e produção)
 - [ ] Servidor valida `rake_bps` on-chain antes de iniciar partidas pagas (deploy recente)
 
 ## Frontend (Vercel)
 
-- [ ] `https://sol-ttt.xyz` e `https://www.sol-ttt.xyz` carregam o jogo
+- [ ] `https://sol-tictactoe.vercel.app` e `https://sol-tictactoe.vercel.app` carregam o jogo
 - [ ] WebSocket conecta (sem erros no console)
 - [ ] Carteira conecta na mainnet (toggle oculto em prod)
 - [ ] Admin acessível só via URL secreta

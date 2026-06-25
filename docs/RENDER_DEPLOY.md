@@ -26,7 +26,7 @@ PROGRAM_ID=AcNc9UMCBBzuN8Yb54gspKEZ5h6zT1pFZCd4L89mHx2h
 FEE_RECIPIENT_WALLET=<pubkey>
 MONGODB_URI=mongodb+srv://...
 DATABASE_PROVIDER=mongodb
-CORS_ORIGIN=https://sol-ttt.xyz,https://www.sol-ttt.xyz
+CORS_ORIGIN=https://sol-tictactoe.vercel.app,https://sol-tictactoe.vercel.app
 HOUSE_RAKE_BPS=300
 AUTHORITY_KEYPAIR_PATH=/etc/secrets/authority.json
 FEE_WALLET_KEYPAIR_PATH=/etc/secrets/fee-wallet.json
@@ -40,16 +40,16 @@ REQUIRE_PLAYER_AUTH=true
 
 ## 4. DNS
 
-Aponte `api.sol-ttt.xyz` (CNAME) para o host Render, ou use a URL `.onrender.com` em `VITE_API_URL` no Vercel.
+Aponte `sol-ttt-api.onrender.com` (CNAME) para o host Render, ou use a URL `.onrender.com` em `VITE_API_URL` no Vercel.
 
 ## 5. Verificar
 
 ```bash
-curl https://api.sol-ttt.xyz/health
-curl https://api.sol-ttt.xyz/config
-npm run smoke:escrow  # API_URL=https://api.sol-ttt.xyz
+curl https://sol-ttt-api.onrender.com/health
+curl https://sol-ttt-api.onrender.com/config
+npm run smoke:escrow  # API_URL=https://sol-ttt-api.onrender.com
 ```
 
 ## WebSocket
 
-Socket.io usa o mesmo host — clientes conectam em `wss://api.sol-ttt.xyz/socket.io`.
+Socket.io usa o mesmo host — clientes conectam em `wss://sol-ttt-api.onrender.com/socket.io`.

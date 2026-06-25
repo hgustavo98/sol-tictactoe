@@ -1,4 +1,4 @@
-/** Default secret admin path on sol-ttt.xyz — set VITE_ADMIN_BASE_PATH in Vercel to rotate. */
+/** Default secret admin path on the Vercel app — set VITE_ADMIN_BASE_PATH in Vercel to rotate. */
 export const DEFAULT_ADMIN_BASE_PATH = "/r8n4x2k7m9p3/";
 
 export function normalizeAdminBase(raw) {

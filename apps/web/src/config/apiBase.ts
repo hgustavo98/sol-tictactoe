@@ -1,12 +1,10 @@
 import { normalizeApiUrl, normalizeAppUrl } from "./normalizeUrl";
 
 /** Production host → API host when VITE_API_URL was missing at build time. */
+/** Vercel production hosts → Render API (no custom domain required). */
 const API_BY_APP_HOST: Record<string, string> = {
-  "sol-ttt.xyz": "https://sol-ttt-api.onrender.com",
-  "www.sol-ttt.xyz": "https://sol-ttt-api.onrender.com",
-  "sol-ttt.vercel.app": "https://sol-ttt-api.onrender.com",
   "sol-tictactoe.vercel.app": "https://sol-ttt-api.onrender.com",
-  "solanacheckers.vercel.app": "https://sol-ttt-api.onrender.com",
+  "sol-ttt.vercel.app": "https://sol-ttt-api.onrender.com",
 };
 
 /**

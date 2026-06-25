@@ -21,7 +21,7 @@ services:
       - key: HOUSE_RAKE_BPS
         value: "300"
       - key: CORS_ORIGIN
-        value: https://sol-ttt.vercel.app,https://sol-tictactoe.vercel.app,https://sol-ttt.xyz,https://www.sol-ttt.xyz
+        value: https://sol-tictactoe.vercel.app,https://sol-ttt.vercel.app
       - key: AUTHORITY_KEYPAIR_PATH
         value: /etc/secrets/authority.json
       - key: FEE_WALLET_KEYPAIR_PATH

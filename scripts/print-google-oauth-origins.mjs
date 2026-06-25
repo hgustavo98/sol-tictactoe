@@ -33,12 +33,12 @@ const corsRaw =
   process.env.CORS_ORIGIN ??
   readEnv(path.join(root, "docs/render.deploy.env"), "CORS_ORIGIN") ??
   readEnv(path.join(root, "docs/secrets.local.env"), "CORS_ORIGIN") ??
-  "https://sol-ttt.xyz,http://localhost:5173,http://localhost:5174";
+  "https://sol-tictactoe.vercel.app,http://localhost:5173,http://localhost:5174";
 
 const publicUrl =
   process.env.VITE_PUBLIC_APP_URL ??
   readEnv(path.join(root, "docs/vercel.production.env"), "VITE_PUBLIC_APP_URL") ??
-  "https://sol-ttt.xyz";
+  "https://sol-tictactoe.vercel.app";
 
 const clientId =
   process.env.GOOGLE_CLIENT_ID ??
@@ -79,5 +79,5 @@ for (const o of [...origins].sort()) {
 console.log("\nAdmin URL (mesma origin acima — path não vai no Google):\n");
 console.log(`  ${adminUrl}\n`);
 console.log(
-  "Se usar www (ex.: https://www.sol-ttt.xyz), adicione também essa origin.\n",
+  "Se usar um alias Vercel extra, adicione também essa origin.\n",
 );

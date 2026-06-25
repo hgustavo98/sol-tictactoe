@@ -74,40 +74,6 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "sol-ttt.xyz"
-        },
-        {
-          "type": "header",
-          "key": "x-forwarded-proto",
-          "value": "http"
-        }
-      ],
-      "destination": "https://sol-ttt.xyz/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.sol-ttt.xyz"
-        },
-        {
-          "type": "header",
-          "key": "x-forwarded-proto",
-          "value": "http"
-        }
-      ],
-      "destination": "https://www.sol-ttt.xyz/:path*",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     {
       "source": "/api/:path*",
@@ -136,10 +102,6 @@
     {
       "source": "/models/:path*",
       "destination": "/models/:path*"
-    },
-    {
-      "source": "/.well-known/:path*",
-      "destination": "/.well-known/:path*"
     },
     {
       "source": "/(.*)",

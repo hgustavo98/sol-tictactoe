@@ -1,4 +1,6 @@
-# Deploy Vercel — sol-ttt.xyz (jogo + admin oculto)
+# Deploy Vercel — domínio *.vercel.app (jogo + admin oculto)
+
+Sem domínio customizado. Use a URL que a Vercel atribuir ao projeto (ex.: `https://sol-tictactoe.vercel.app`).
 
 ## Projeto
 
@@ -9,39 +11,49 @@
 
 ## Environment Variables (Production)
 
+Copie de [`vercel.production.env.example`](./vercel.production.env.example):
+
 ```env
-VITE_API_URL=https://api.sol-ttt.xyz
+VITE_API_URL=https://sol-ttt-api.onrender.com
 VITE_MAINNET_RPC_URL=https://mainnet.helius-rpc.com/?api-key=...
-VITE_PROGRAM_ID=<mainnet_program_id>
-VITE_PUBLIC_APP_URL=https://sol-ttt.xyz
-# Aceita também sem https (ex.: sol-ttt.xyz) — o build normaliza automaticamente.
+VITE_PROGRAM_ID=<program_id>
+VITE_PUBLIC_APP_URL=https://sol-tictactoe.vercel.app
 VITE_DEFAULT_CLUSTER=mainnet-beta
 VITE_ADMIN_BASE_PATH=/r8n4x2k7m9p3/
 VITE_GOOGLE_CLIENT_ID=<mesmo GOOGLE_CLIENT_ID do server>
 VITE_ALLOWED_MINTS=
 ```
 
+`VITE_PUBLIC_APP_URL` deve ser a URL exata do deploy na Vercel (Settings → Domains).
+
 `VITE_ADMIN_BASE_PATH` deve coincidir com os rewrites em `vercel.json`.
 
-## Domínio
+## Render (API)
 
-- Apex `sol-ttt.xyz` e `www.sol-ttt.xyz` → Vercel (ambos servem o jogo)
-- Admin: `https://sol-ttt.xyz/<path-secreto>/` (não linkar do jogo)
+No dashboard Render, defina `CORS_ORIGIN` com a mesma URL Vercel:
+
+```env
+CORS_ORIGIN=https://sol-tictactoe.vercel.app
+```
+
+Se usar um alias Vercel adicional, separe com vírgula.
+
+## Admin oculto
+
+- Jogo: `https://sol-tictactoe.vercel.app`
+- Admin: `https://sol-tictactoe.vercel.app/<path-secreto>/` (não linkar do jogo)
 
 ## Google OAuth
 
-Erro **`origin_mismatch`** = falta registrar a **origin** (domínio) no Google Cloud Console.
-
-O path secreto do admin (`/r8n4x2k7m9p3/`) **não** entra no Google — só o domínio.
+Erro **`origin_mismatch`** = falta registrar a **origin** no Google Cloud Console.
 
 1. Abra [Google Cloud → Credentials](https://console.cloud.google.com/apis/credentials)
 2. Clique no OAuth 2.0 Client ID (mesmo valor de `GOOGLE_CLIENT_ID`)
 3. Em **Authorized JavaScript origins**, adicione:
-   - `https://sol-ttt.xyz`
+   - `https://sol-tictactoe.vercel.app` (ou sua URL Vercel)
    - `http://localhost:5173` (jogo dev)
    - `http://localhost:5174` (admin dev standalone)
-4. Se acessar via `www`, adicione também `https://www.sol-ttt.xyz`
-5. Salve e aguarde ~1 minuto; teste em `https://sol-ttt.xyz/r8n4x2k7m9p3/`
+4. Salve e aguarde ~1 minuto
 
 Lista automática no repo:
 
@@ -49,9 +61,12 @@ Lista automática no repo:
 npm run google:oauth:origins
 ```
 
-## Deploy manual
+## Deploy
+
+Conecte o repo [hgustavo98/sol-tictactoe](https://github.com/hgustavo98/sol-tictactoe) na Vercel — o build usa `vercel.json` na raiz.
+
+Deploy manual:
 
 ```bash
 npm run build:vercel
-# ou conecte o repo na Vercel — build automático via vercel.json
 ```

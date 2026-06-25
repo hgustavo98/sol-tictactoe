@@ -1,4 +1,4 @@
-/** Accept "sol-ttt.xyz" or "https://sol-ttt.xyz" from Vercel env. */
+/** Accept bare host or full URL from Vercel env. */
 export function normalizeAppUrl(
   raw: string | undefined,
   fallback: string,

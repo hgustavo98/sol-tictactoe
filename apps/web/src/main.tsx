@@ -2,9 +2,9 @@
 if (typeof window !== "undefined") {
   const { hostname, protocol, href } = window.location;
   const isProdHost =
-    hostname === "sol-ttt.xyz" ||
-    hostname === "www.sol-ttt.xyz" ||
-    hostname === "sol-ttt.vercel.app";
+    hostname === "sol-tictactoe.vercel.app" ||
+    hostname === "sol-ttt.vercel.app" ||
+    hostname.endsWith(".vercel.app");
 
   if (protocol === "http:" && isProdHost) {
     window.location.replace(href.replace(/^http:/, "https:"));

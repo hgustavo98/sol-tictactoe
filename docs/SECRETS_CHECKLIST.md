@@ -17,8 +17,8 @@ Preencha os valores e salve. O agente usa esse arquivo para deploy sem te interr
 LAUNCH_CLUSTER=devnet
 
 # --- Domínio (produção) ---
-DOMAIN=sol-ttt.xyz
-API_DOMAIN=api.sol-ttt.xyz
+# DOMAIN= (not used — Vercel *.vercel.app only)
+API_DOMAIN=sol-ttt-api.onrender.com
 VITE_ADMIN_BASE_PATH=/r8n4x2k7m9p3/
 
 # --- Solana ---

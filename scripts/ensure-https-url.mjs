@@ -1,5 +1,5 @@
 /**
- * Vercel env vars are sometimes set as "sol-ttt.xyz" without a scheme.
+ * Vercel env vars are sometimes set without a scheme (e.g. sol-tictactoe.vercel.app).
  * Browsers treat that as a relative URL and break API / admin links.
  */
 export function ensureHttpsUrl(raw, { allowHttpLocalhost = true } = {}) {
