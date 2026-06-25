@@ -33,6 +33,8 @@ import type { LobbyView } from "./lobby/lobbyView";
 import { MODE_ACCENT } from "./theme";
 import type { ArenaCardData } from "../damas3d/lobby/ArenaCard3D";
 import { cn } from "@/lib/utils";
+import { useWalletModal } from "@/components/wallet/WalletModalContext";
+import { XttBrandHero } from "./XttBrandHero";
 
 export interface TttLobbyProps {
   playerId?: string;
@@ -82,6 +84,7 @@ export interface TttLobbyProps {
 
 export function TttLobby(props: TttLobbyProps) {
   const { t } = useTranslation();
+  const { openWalletModal } = useWalletModal();
   const {
     playerId,
     viewerWallet,
@@ -178,10 +181,14 @@ export function TttLobby(props: TttLobbyProps) {
   return (
     <div className="xtt-lobby" data-view={lobbyView}>
       {showConnect && (
-        <div className="xtt-connect">
-          <p>{t("lobby.connectWallet")}</p>
-          <div className="xtt-connect-actions">
-            <button type="button" className="xtt-btn xtt-btn-primary" disabled>
+        <div className="xtt-hero-stack">
+          <XttBrandHero />
+          <div className="xtt-connect">
+            <button
+              type="button"
+              className="xtt-btn xtt-btn-primary xtt-btn-lg"
+              onClick={() => openWalletModal()}
+            >
               {t("wallet.connect")}
             </button>
             <button
@@ -194,6 +201,10 @@ export function TttLobby(props: TttLobbyProps) {
             </button>
           </div>
         </div>
+      )}
+
+      {browsing && hasAccess && (
+        <XttBrandHero compact />
       )}
 
       {browsing && hasAccess && activeCard && (

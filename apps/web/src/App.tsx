@@ -23,10 +23,10 @@ import {
 import { ActiveMatchBanner } from "./components/ActiveMatchBanner";
 import { DevnetWarningModal } from "./components/DevnetWarningModal";
 import { GameResultModal } from "./components/game/GameResultModal";
-import { Header } from "./components/Header";
 import { HardwareAccelBanner } from "./components/HardwareAccelBanner";
 import { LobbyCenter } from "./components/LobbyCenter";
 import { MainLayout } from "./components/layout/MainLayout";
+import { XttFloatingControls } from "./ttt2d/XttFloatingControls";
 import type { LobbyView } from "./ttt2d/lobby/lobbyView";
 import type { GameModeId } from "./config/gameModes";
 import { useLobbyActions } from "./hooks/useLobbyActions";
@@ -541,7 +541,7 @@ export function App() {
 
   return (
     <div className="app-shell xtt-app">
-      <Header onDevnetBadgeClick={() => setDevnetWarningOpen(true)} />
+      <XttFloatingControls onDevnetBadgeClick={() => setDevnetWarningOpen(true)} />
       <DevnetWarningModal
         open={devnetWarningOpen}
         onOpenChange={setDevnetWarningOpen}
@@ -549,13 +549,13 @@ export function App() {
       <HardwareAccelBanner />
 
       {configError && (
-        <div className="player-auth-banner player-auth-banner-error" role="alert">
+        <div className="xtt-toast xtt-toast-error" role="alert">
           <span>{t("errors.configFailed")}</span>
         </div>
       )}
 
       {!configLoading && !configError && !mockEscrow && !escrowEnabled && !isFreeEntryTable && !inTraining && (
-        <div className="player-auth-banner" role="status">
+        <div className="xtt-toast" role="status">
           <span>{t("errors.escrowNotReady")}</span>
         </div>
       )}

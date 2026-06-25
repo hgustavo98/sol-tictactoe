@@ -4,7 +4,7 @@ import { Check, ChevronDown, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SUPPORTED_LANGUAGES, type LanguageCode } from "@/i18n";
 
-export function LanguageSwitcher() {
+export function LanguageSwitcher({ variant = "default" }: { variant?: "default" | "xtt" }) {
   const { i18n, t } = useTranslation();
   const [open, setOpen] = useState(false);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -38,17 +38,24 @@ export function LanguageSwitcher() {
         type="button"
         onClick={() => setOpen((value) => !value)}
         className={cn(
-          "inline-flex h-9 items-center gap-1.5 rounded-lg border border-red-500/25",
-          "bg-[rgba(42,16,16,0.92)] px-2.5 font-game text-xs font-semibold text-white/90",
-          "transition-colors duration-150 hover:border-red-400/45",
-          "hover:bg-[rgba(61,21,21,0.95)]",
+          variant === "xtt"
+            ? "xtt-lang-btn"
+            : [
+                "inline-flex h-9 items-center gap-1.5 rounded-lg border border-red-500/25",
+                "bg-[rgba(42,16,16,0.92)] px-2.5 font-game text-xs font-semibold text-white/90",
+                "transition-colors duration-150 hover:border-red-400/45",
+                "hover:bg-[rgba(61,21,21,0.95)]",
+              ],
         )}
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-label={t("language.label")}
       >
         <Globe
-          className="size-3.5 shrink-0 text-red-400"
+          className={cn(
+            "size-3.5 shrink-0",
+            variant === "xtt" ? "text-[#33cfff]" : "text-red-400",
+          )}
           strokeWidth={2}
           aria-hidden
         />
@@ -70,9 +77,11 @@ export function LanguageSwitcher() {
           aria-label={t("language.label")}
           className={cn(
             "absolute right-0 top-[calc(100%+0.35rem)] z-[60] min-w-[10.5rem]",
-            "overflow-hidden rounded-lg border border-white/12",
-            "bg-[#1a0808] py-1 shadow-[0_12px_32px_rgba(0,0,0,0.45)]",
+            "overflow-hidden rounded-lg border py-1 shadow-[0_12px_32px_rgba(0,0,0,0.45)]",
             "animate-in fade-in-0 zoom-in-95 duration-150",
+            variant === "xtt"
+              ? "border-[rgba(124,58,237,0.35)] bg-[#0c1024]"
+              : "border-white/12 bg-[#1a0808]",
           )}
         >
           {SUPPORTED_LANGUAGES.map((lang) => {
@@ -91,13 +100,20 @@ export function LanguageSwitcher() {
                     "flex w-full items-center justify-between gap-2 px-3 py-2",
                     "text-left text-xs font-medium transition-colors duration-100",
                     selected
-                      ? "bg-red-500/15 text-red-200"
+                      ? variant === "xtt"
+                        ? "bg-[rgba(0,180,255,0.12)] text-[#33cfff]"
+                        : "bg-red-500/15 text-red-200"
                       : "text-white/90 hover:bg-white/8",
                   )}
                 >
                   <span>{lang.label}</span>
                   {selected && (
-                    <Check className="size-3.5 shrink-0 text-red-400" />
+                    <Check
+                      className={cn(
+                        "size-3.5 shrink-0",
+                        variant === "xtt" ? "text-[#33cfff]" : "text-red-400",
+                      )}
+                    />
                   )}
                 </button>
               </li>
