@@ -202,7 +202,7 @@ export function TttLobby(props: TttLobbyProps) {
             )}
             <button
               type="button"
-              className="xtt-link xtt-link-inline"
+              className="xtt-btn xtt-btn-guest xtt-btn-lg"
               disabled={guestStarting}
               onClick={onPlayAsGuest}
             >

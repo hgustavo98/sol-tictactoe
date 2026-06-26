@@ -20,11 +20,10 @@ export function TrainingGame2D({ onExit }: TrainingGame2DProps) {
   const [moves, setMoves] = useState<string[]>([]);
   const [ended, setEnded] = useState(false);
   const [endMessage, setEndMessage] = useState("");
-  const [aiThinking, setAiThinking] = useState(false);
 
   const aiColor: "w" | "b" = playerColor === "w" ? "b" : "w";
   const engine = useMemo(() => new TictactoeEngine(fen), [fen]);
-  const isPlayerTurn = engine.turn() === playerColor && !ended && !aiThinking;
+  const isPlayerTurn = engine.turn() === playerColor && !ended;
 
   const finishIfOver = useCallback(
     (board: TictactoeEngine) => {
@@ -57,25 +56,24 @@ export function TrainingGame2D({ onExit }: TrainingGame2DProps) {
   );
 
   useEffect(() => {
-    if (ended || aiThinking) return;
+    if (ended) return;
     if (engine.turn() !== aiColor) return;
 
-    setAiThinking(true);
+    const move = pickTrainingMove(fen, aiColor);
+    if (!move) return;
+
     const timer = window.setTimeout(() => {
-      const move = pickTrainingMove(fen, aiColor);
-      if (move) applyMove(move.to);
-      setAiThinking(false);
-    }, 350);
+      applyMove(move.to);
+    }, 50);
 
     return () => window.clearTimeout(timer);
-  }, [fen, aiColor, ended, aiThinking, engine, applyMove]);
+  }, [fen, aiColor, ended, engine, applyMove]);
 
   const reset = () => {
     setFen(INITIAL_TTT_FEN);
     setMoves([]);
     setEnded(false);
     setEndMessage("");
-    setAiThinking(false);
   };
 
   const lastMove = moves.length > 0 ? moves[moves.length - 1] : null;
@@ -98,7 +96,6 @@ export function TrainingGame2D({ onExit }: TrainingGame2DProps) {
       </div>
 
       {ended && <p className="xtt-status xtt-status-yours">{endMessage}</p>}
-      {aiThinking && <p className="xtt-status">{t("training.thinking")}</p>}
 
       <TttBoard
         fen={fen}
