@@ -9,7 +9,7 @@ import type {
   TournamentQueueStatus,
 } from "@sol-tictactoe/shared";
 import { cn } from "@/lib/utils";
-import { MODE_ACCENT } from "../../damas3d/lobby/dopamineColors";
+import { XTT_MODE_ACCENT } from "../../ttt2d/xttColors";
 import { OpenTablesPanel } from "./OpenTablesList";
 
 interface OpenTablesSheetProps {
@@ -46,7 +46,7 @@ export function OpenTablesSheet({
   onJoin,
 }: OpenTablesSheetProps) {
   const { t } = useTranslation();
-  const accent = MODE_ACCENT[activeMode] ?? MODE_ACCENT.casual1v1;
+  const accent = XTT_MODE_ACCENT[activeMode] ?? XTT_MODE_ACCENT.casual1v1;
 
   if (!open || typeof document === "undefined") return null;
 

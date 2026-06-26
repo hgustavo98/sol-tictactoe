@@ -643,9 +643,170 @@ body:has(.xtt-app) {
   padding: 0.85rem;
 }
 
-/* ── Scoped overrides for legacy checkers components ── */
+/* ── Open Tables — neon azul/roxo (substitui laranja checkers) ── */
 .app-shell.xtt-app .open-tables-sheet {
-  --open-tables-accent: #7c3aed;
+  --open-tables-accent: var(--xtt-accent, #7c3aed);
+  border-color: rgba(124, 58, 237, 0.32);
+  background: rgba(12, 16, 36, 0.92);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 32px rgba(124, 58, 237, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.app-shell.xtt-app .open-tables-sheet--casual1v1 {
+  --xtt-accent: #00b4ff;
+  border-color: rgba(0, 180, 255, 0.28);
+  box-shadow:
+    0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 28px rgba(0, 180, 255, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.app-shell.xtt-app .open-tables-sheet--custom1v1 {
+  --xtt-accent: #7c3aed;
+}
+
+.app-shell.xtt-app .open-tables-sheet-glow {
+  background: radial-gradient(
+    ellipse 120% 80% at 100% 0%,
+    color-mix(in srgb, var(--open-tables-accent) 14%, transparent),
+    transparent 58%
+  );
+}
+
+.app-shell.xtt-app .open-tables-sheet-head {
+  border-bottom-color: rgba(124, 58, 237, 0.2);
+}
+
+.app-shell.xtt-app .open-tables-sheet-title {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+}
+
+.app-shell.xtt-app .open-tables-sheet-mode {
+  color: var(--open-tables-accent);
+  text-shadow: 0 0 12px color-mix(in srgb, var(--open-tables-accent) 35%, transparent);
+}
+
+.app-shell.xtt-app .open-tables-sheet-count {
+  background: color-mix(in srgb, var(--open-tables-accent) 18%, rgba(0, 0, 0, 0.35));
+  border-color: color-mix(in srgb, var(--open-tables-accent) 38%, transparent);
+  color: #e2e8f0;
+}
+
+.app-shell.xtt-app .open-tables-sheet-close:hover {
+  border-color: rgba(124, 58, 237, 0.4);
+  color: #c084fc;
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-tables-search-input {
+  border-color: rgba(124, 58, 237, 0.22);
+  background: rgba(6, 9, 18, 0.65);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-tables-search-input:focus-visible {
+  border-color: rgba(124, 58, 237, 0.55);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.18);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-table-card {
+  border-color: rgba(124, 58, 237, 0.16);
+  background: rgba(8, 12, 28, 0.72);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-table-card:hover {
+  border-color: rgba(124, 58, 237, 0.38);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.12);
+}
+
+.app-shell.xtt-app .open-table-mode-casual {
+  border-color: rgba(0, 180, 255, 0.35);
+  color: #7df9ff;
+  background: rgba(0, 180, 255, 0.08);
+}
+
+.app-shell.xtt-app .open-table-mode-custom {
+  border-color: rgba(124, 58, 237, 0.45);
+  color: #c084fc;
+  background: rgba(124, 58, 237, 0.12);
+}
+
+.app-shell.xtt-app .open-table-mode-ranked {
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #d8b4fe;
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.app-shell.xtt-app .open-table-mode-tournament {
+  border-color: rgba(0, 180, 255, 0.35);
+  color: #7df9ff;
+  background: rgba(0, 180, 255, 0.08);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-table-stake-value-prize {
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.35);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-table-stakes {
+  border-color: rgba(124, 58, 237, 0.12);
+  background: rgba(6, 9, 18, 0.55);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-table-join-btn {
+  height: 2.05rem;
+  border: none;
+  border-radius: 0.55rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.35);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-table-join-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.45);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-table-join-btn:disabled {
+  opacity: 0.45;
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .custom-scrollbar {
+  scrollbar-color: rgba(124, 58, 237, 0.55) rgba(6, 9, 18, 0.4);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(124, 58, 237, 0.75) 0%,
+    rgba(91, 33, 182, 0.65) 100%
+  );
+  border-color: rgba(124, 58, 237, 0.28);
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(139, 92, 246, 0.85) 0%,
+    rgba(109, 40, 217, 0.75) 100%
+  );
+}
+
+.app-shell.xtt-app .open-tables-sheet-panel .open-table-stake-value.text-emerald-300 {
+  color: #38bdf8;
+}
+
+.app-shell.xtt-app .open-tables-empty {
+  color: rgba(148, 163, 184, 0.85);
+  font-size: 0.72rem;
 }
 
 .app-shell.xtt-app .wallet-connect-header-btn {
