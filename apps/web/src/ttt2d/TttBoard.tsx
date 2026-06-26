@@ -45,7 +45,7 @@ export function TttBoard({
 
   return (
     <div className="xtt-board-wrap">
-      <div className="xtt-board-grid" role="grid" aria-label="Tic Tac Toe">
+      <div className="xtt-board-grid" role="grid" aria-label="Tactoe">
         {CELLS.map((cell, idx) => {
           const mark = marks[idx];
           const charMark = mark === "x" ? "x" : mark === "o" ? "o" : ".";

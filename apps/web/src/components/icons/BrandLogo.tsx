@@ -18,7 +18,7 @@ export function BrandLogo({
       height={size}
       viewBox="0 0 48 48"
       aria-hidden={decorative || undefined}
-      aria-label={decorative ? undefined : "SOL Tic Tac Toe"}
+      aria-label={decorative ? undefined : "Tactoe"}
       className={cn("select-none shrink-0", className)}
       role={decorative ? "presentation" : "img"}
     >

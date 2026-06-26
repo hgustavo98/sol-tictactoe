@@ -36,5 +36,5 @@ npx vercel domains verify solcheckers.xyz
 
 ## URLs finais
 
-- **SOL Tic Tac Toe:** https://soltactoe.xyz
+- **Tactoe:** https://soltactoe.xyz
 - **SOL Checkers:** https://solcheckers.xyz

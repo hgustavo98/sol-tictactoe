@@ -19,7 +19,7 @@ export function createWalletSignInChallenge(wallet: string): {
   const nonce = randomUUID();
   const expiresAt = Date.now() + 5 * 60 * 1000;
   const message = [
-    "SOL TTT Sign-In",
+    "Tactoe Sign-In",
     `Wallet: ${wallet}`,
     `Nonce: ${nonce}`,
     `Expires: ${new Date(expiresAt).toISOString()}`,

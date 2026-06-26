@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "SOL Tic Tac Toe",
+    "title": "Tactoe",
     "tagline": "Solana · apostas 1v1"
   },
   "auth": {
@@ -45,7 +45,7 @@
     "bitcoin": "Bitcoin",
     "copy": "Copiar endereço",
     "copied": "Copiado!",
-    "note": "Obrigado pelo apoio — qualquer contribuição ajuda a manter o SOL Tic Tac Toe no ar."
+    "note": "Obrigado pelo apoio — qualquer contribuição ajuda a manter o Tactoe no ar."
   },
   "hardwareAccel": {
     "title": "Aceleração de hardware recomendada",

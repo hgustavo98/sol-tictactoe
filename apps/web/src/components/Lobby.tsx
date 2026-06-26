@@ -111,7 +111,7 @@ export function Lobby({
         <div className="lobby-logo flex flex-col items-center gap-3 text-center">
           <BrandLogo size={64} />
           <div>
-            <h1 className="lobby-logo-title profile-brand">SOL Tic Tac Toe</h1>
+            <h1 className="lobby-logo-title profile-brand">Tactoe</h1>
             <p className="lobby-logo-tag">1v1 · SOL stakes</p>
           </div>
         </div>

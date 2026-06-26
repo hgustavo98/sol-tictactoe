@@ -18,9 +18,9 @@ export function buildGameReceiptMetadata(
   settleSignature?: string,
 ): ReceiptMetadata {
   return {
-    name: `SOL Tic Tac Toe #${matchId.slice(0, 8)}`,
+    name: `Tactoe #${matchId.slice(0, 8)}`,
     symbol: "STTT",
-    description: "Tokenized receipt for a completed SOL Tic Tac Toe wagered match.",
+    description: "Tokenized receipt for a completed Tactoe wagered match.",
     attributes: [
       { trait_type: "Player White", value: shortenAddress(state.playerWhite) },
       { trait_type: "Player Black", value: shortenAddress(state.playerBlack) },

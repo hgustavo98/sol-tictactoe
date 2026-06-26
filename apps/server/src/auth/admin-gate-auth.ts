@@ -163,7 +163,7 @@ export function createGateWalletChallenge(
   const nonce = randomUUID();
   const expiresAt = Date.now() + 5 * 60 * 1000;
   const message = [
-    "SOL TTT Admin Gate",
+    "Tactoe Admin Gate",
     `Email: ${flow.email}`,
     flow.googleEmail ? `Google: ${flow.googleEmail}` : undefined,
     `Wallet: ${wallet}`,

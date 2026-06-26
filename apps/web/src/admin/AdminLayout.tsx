@@ -85,7 +85,7 @@ export function AdminLayout({
         <div className="admin-sidebar-brand">
           <BrandLogo className="admin-sidebar-logo" size={40} />
           <div>
-            <strong>SOL Tic Tac Toe</strong>
+            <strong>Tactoe</strong>
             <span>{t("admin.title")}</span>
           </div>
         </div>

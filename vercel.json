@@ -78,8 +78,15 @@
     {
       "source": "/:path*",
       "has": [
-        { "type": "host", "value": "soltactoe.xyz" },
-        { "type": "header", "key": "x-forwarded-proto", "value": "http" }
+        {
+          "type": "host",
+          "value": "soltactoe.xyz"
+        },
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "http"
+        }
       ],
       "destination": "https://soltactoe.xyz/:path*",
       "permanent": true
@@ -87,8 +94,15 @@
     {
       "source": "/:path*",
       "has": [
-        { "type": "host", "value": "www.soltactoe.xyz" },
-        { "type": "header", "key": "x-forwarded-proto", "value": "http" }
+        {
+          "type": "host",
+          "value": "www.soltactoe.xyz"
+        },
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "http"
+        }
       ],
       "destination": "https://www.soltactoe.xyz/:path*",
       "permanent": true

@@ -207,7 +207,7 @@ async function bootstrap() {
 
   server.listen(config.port, () => {
     const runtime = getRuntimeConfig();
-    console.log(`SOL TTT server running on http://localhost:${config.port}`);
+    console.log(`Tactoe server running on http://localhost:${config.port}`);
     console.log(`Database: ${getDatabaseProvider()}`);
     console.log(`Mock escrow: ${runtime.mockEscrow}`);
     console.log(`Player auth required: ${config.requirePlayerAuth}`);
