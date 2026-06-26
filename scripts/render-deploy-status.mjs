@@ -24,7 +24,10 @@ function loadSecrets() {
 
 const secrets = loadSecrets();
 const API_KEY = secrets.RENDER_API_KEY;
-const SERVICE_ID = secrets.RENDER_SERVICE_ID ?? "srv-d8s2afe7r5hc73euqts0";
+const SERVICE_ID =
+  process.env.RENDER_SERVICE_ID ??
+  secrets.RENDER_TTT_SERVICE_ID ??
+  secrets.RENDER_SERVICE_ID;
 
 async function renderFetch(urlPath) {
   const res = await fetch(`https://api.render.com/v1${urlPath}`, {
