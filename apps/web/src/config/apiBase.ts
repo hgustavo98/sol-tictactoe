@@ -9,11 +9,7 @@ const API_BY_APP_HOST: Record<string, string> = {
   "sol-ttt.vercel.app": "https://sol-ttt-api.onrender.com",
 };
 
-/**
- * API origin for fetch/socket. Empty in local dev → Vite proxies /api to localhost.
- * Must be a function: VITE_API_URL is inlined at build time and may be absent on Vercel.
- */
-export function getApiBase(): string {
+function resolveDirectApiUrl(): string {
   const fromEnv = import.meta.env.VITE_API_URL?.trim();
   if (fromEnv) return normalizeApiUrl(fromEnv);
 
@@ -34,4 +30,24 @@ export function getApiBase(): string {
   }
 
   return "";
+}
+
+function isHostedAppOrigin(): boolean {
+  if (typeof window === "undefined") return false;
+  return Boolean(API_BY_APP_HOST[window.location.hostname]);
+}
+
+/**
+ * REST API origin. Empty → same-origin /api (Vite or Vercel proxy).
+ * Avoids cross-origin fetch + CORS on production web hosts.
+ */
+export function getApiBase(): string {
+  if (import.meta.env.VITE_API_URL?.trim()) return resolveDirectApiUrl();
+  if (isHostedAppOrigin()) return "";
+  return resolveDirectApiUrl();
+}
+
+/** Direct API origin for Socket.IO (WebSocket cannot use the /api rewrite). */
+export function getSocketBase(): string {
+  return resolveDirectApiUrl();
 }

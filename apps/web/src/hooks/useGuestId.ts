@@ -48,12 +48,26 @@ export async function ensureGuestSession(): Promise<GuestSessionResult> {
 }
 
 export function refreshGuestSession(): Promise<GuestSessionResult> {
-  return fetch(`${getApiBase()}/api/auth/guest`, { method: "POST" })
-    .then(async (res): Promise<GuestSessionResult> => {
-      if (!res.ok) return { ok: false, reason: "server" };
-      const session = (await res.json()) as GuestSessionInfo;
-      return { ok: true, session: persistGuestSession(session) };
-    })
+  const tryOnce = () =>
+    fetch(`${getApiBase()}/api/auth/guest`, { method: "POST" }).then(
+      async (res): Promise<GuestSessionResult> => {
+        if (!res.ok) return { ok: false, reason: "server" };
+        const session = (await res.json()) as GuestSessionInfo;
+        return { ok: true, session: persistGuestSession(session) };
+      },
+    );
+
+  const wakeAndRetry = async (): Promise<GuestSessionResult> => {
+    try {
+      await fetch(`${getApiBase()}/health`);
+    } catch {
+      /* cold start — still try guest */
+    }
+    return tryOnce();
+  };
+
+  return tryOnce()
+    .catch((): Promise<GuestSessionResult> => wakeAndRetry())
     .catch((): GuestSessionResult => ({ ok: false, reason: "network" }));
 }
 

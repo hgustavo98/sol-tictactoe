@@ -6,7 +6,7 @@ import {
   type GameState,
   type LobbyMatch,
 } from "@sol-tictactoe/shared";
-import { getApiBase } from "../config/apiBase";
+import { getSocketBase } from "../config/apiBase";
 import { getGuestSession, refreshGuestSession } from "./useGuestId";
 import { loadPlayerSession } from "./playerAuthStorage";
 
@@ -40,7 +40,7 @@ let socketInstance: Socket | null = null;
 let socketAuth: SocketAuthPayload = loadInitialSocketAuth();
 
 function buildSocket(): Socket {
-  const url = getApiBase() || undefined;
+  const url = getSocketBase() || undefined;
   const socket = io(url, {
     transports: ["websocket", "polling"],
     auth: { ...socketAuth },

@@ -77,9 +77,23 @@ async function main() {
     { key: "HOUSE_RAKE_BPS", value: secrets.HOUSE_RAKE_BPS ?? "300" },
     {
       key: "CORS_ORIGIN",
-      value:
-        secrets.CORS_ORIGIN ??
-        "https://soltactoe.xyz,https://www.soltactoe.xyz,https://sol-tictactoe.vercel.app,https://sol-ttt.vercel.app",
+      value: [
+        ...new Set(
+          (
+            secrets.CORS_ORIGIN ??
+            "https://soltactoe.xyz,https://www.soltactoe.xyz,https://sol-tictactoe.vercel.app,https://sol-ttt.vercel.app"
+          )
+            .split(",")
+            .map((o) => o.trim())
+            .concat([
+              "https://soltactoe.xyz",
+              "https://www.soltactoe.xyz",
+              "https://sol-tictactoe.vercel.app",
+              "https://sol-ttt.vercel.app",
+            ])
+            .filter(Boolean),
+        ),
+      ].join(","),
     },
     {
       key: "AUTHORITY_KEYPAIR_PATH",
