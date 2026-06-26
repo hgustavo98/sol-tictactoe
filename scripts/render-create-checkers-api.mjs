@@ -69,7 +69,7 @@ const created = await renderFetch("POST", "/services", {
   ownerId,
   repo: "https://github.com/hgustavo98/sol-tictactoe",
   autoDeploy: "yes",
-  branch: "main",
+  branch: "master",
   serviceDetails: {
     env: "docker",
     envSpecificDetails: {

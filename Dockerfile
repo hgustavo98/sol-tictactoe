@@ -7,19 +7,15 @@ COPY package.json package-lock.json ./
 COPY apps/server/package.json apps/server/
 COPY packages/shared/package.json packages/shared/
 
-RUN npm ci --workspace=@solana-damas/server --workspace=@solana-damas/shared --include-workspace-root
+RUN npm ci --workspace=@sol-tictactoe/server --workspace=@sol-tictactoe/shared --include-workspace-root
 
 COPY packages/shared packages/shared
 COPY apps/server apps/server
 
-RUN npm run build -w @solana-damas/shared && npm run build -w @solana-damas/server
+RUN npm run build -w @sol-tictactoe/shared && npm run build -w @sol-tictactoe/server
 
 FROM node:20-bookworm-slim AS runtime
 WORKDIR /app
-
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends stockfish \
-  && rm -rf /var/lib/apt/lists/*
 
 ENV NODE_ENV=production
 ENV PORT=3000
@@ -28,7 +24,7 @@ COPY package.json package-lock.json ./
 COPY apps/server/package.json apps/server/
 COPY packages/shared/package.json packages/shared/
 
-RUN npm ci --workspace=@solana-damas/server --workspace=@solana-damas/shared --include-workspace-root --omit=dev
+RUN npm ci --workspace=@sol-tictactoe/server --workspace=@sol-tictactoe/shared --include-workspace-root --omit=dev
 
 COPY --from=build /app/packages/shared/dist packages/shared/dist
 COPY --from=build /app/apps/server/dist apps/server/dist

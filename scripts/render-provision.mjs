@@ -26,9 +26,8 @@ function loadSecrets() {
 const secrets = loadSecrets();
 const SERVICE_ID =
   process.env.RENDER_SERVICE_ID ??
-  secrets.RENDER_CHECKERS_SERVICE_ID ??
-  secrets.RENDER_SERVICE_ID ??
-  "srv-d8s2afe7r5hc73euqts0";
+  secrets.RENDER_TTT_SERVICE_ID ??
+  secrets.RENDER_SERVICE_ID;
 const API_KEY = process.env.RENDER_API_KEY ?? secrets.RENDER_API_KEY;
 
 async function renderFetch(method, urlPath, body) {
@@ -57,6 +56,10 @@ async function renderFetch(method, urlPath, body) {
 async function main() {
   if (!API_KEY) {
     console.error("Set RENDER_API_KEY");
+    process.exit(1);
+  }
+  if (!SERVICE_ID) {
+    console.error("Set RENDER_TTT_SERVICE_ID (run scripts/render-create-checkers-api.mjs first)");
     process.exit(1);
   }
 

@@ -191,9 +191,18 @@ export function TttLobby(props: TttLobbyProps) {
             >
               {t("wallet.connect")}
             </button>
+            {onTrainingStart && (
+              <button
+                type="button"
+                className="xtt-btn xtt-btn-ghost"
+                onClick={onTrainingStart}
+              >
+                {t("training.start")}
+              </button>
+            )}
             <button
               type="button"
-              className="xtt-btn xtt-btn-ghost"
+              className="xtt-link xtt-link-inline"
               disabled={guestStarting}
               onClick={onPlayAsGuest}
             >

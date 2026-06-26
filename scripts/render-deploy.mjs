@@ -26,12 +26,16 @@ const secrets = loadSecrets();
 const API_KEY = secrets.RENDER_API_KEY;
 const SERVICE_ID =
   process.env.RENDER_SERVICE_ID ??
-  secrets.RENDER_CHECKERS_SERVICE_ID ??
-  secrets.RENDER_SERVICE_ID ??
-  "srv-d8s2afe7r5hc73euqts0";
+  secrets.RENDER_TTT_SERVICE_ID ??
+  secrets.RENDER_SERVICE_ID;
 
 if (!API_KEY) {
   console.error("Set RENDER_API_KEY in docs/secrets.local.env");
+  process.exit(1);
+}
+
+if (!SERVICE_ID) {
+  console.error("Set RENDER_TTT_SERVICE_ID (run scripts/render-create-checkers-api.mjs first)");
   process.exit(1);
 }
 

@@ -1,4 +1,4 @@
-# Render Blueprint — SOL TTT API + WebSocket
+# Render Blueprint — SOL Tic Tac Toe API + WebSocket
 # Docs: https://render.com/docs/blueprint-spec
 
 services:
@@ -12,10 +12,14 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
+      - key: BASIC_DEPLOY
+        value: true
       - key: MOCK_ESCROW
         value: true
       - key: REQUIRE_PLAYER_AUTH
         value: false
+      - key: TRUST_PROXY
+        value: true
       - key: LAUNCH_CLUSTER
         value: devnet
       - key: HOUSE_RAKE_BPS
@@ -29,7 +33,5 @@ services:
       - key: ADMIN_PLATFORMS_CONFIG
         value: ./apps/server/admin-platforms.json
       # Set in Render dashboard (secrets):
-      # RPC_URL, PROGRAM_ID, FEE_RECIPIENT_WALLET, MONGODB_URI,
-      # ADMIN_GATE_EMAIL, ADMIN_GATE_GOOGLE_EMAIL, ADMIN_GATE_WALLET,
-      # GOOGLE_CLIENT_ID, ADMIN_SECRET, ADMIN_API_KEY
-      # Upload secret files: authority.json, fee-wallet.json
+      # RPC_URL, PROGRAM_ID, MONGODB_URI, ADMIN_SECRET, ADMIN_API_KEY
+      # Upload secret files: authority.json, fee-wallet.json (optional with BASIC_DEPLOY)
