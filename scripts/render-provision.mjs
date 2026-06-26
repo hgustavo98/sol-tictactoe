@@ -79,7 +79,7 @@ async function main() {
       key: "CORS_ORIGIN",
       value:
         secrets.CORS_ORIGIN ??
-        "https://sol-tictactoe.vercel.app,https://sol-ttt.vercel.app",
+        "https://soltactoe.xyz,https://www.soltactoe.xyz,https://sol-tictactoe.vercel.app,https://sol-ttt.vercel.app",
     },
     {
       key: "AUTHORITY_KEYPAIR_PATH",

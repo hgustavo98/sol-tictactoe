@@ -35,7 +35,7 @@ npm run dev:game
 
 | Serviço | URL |
 |---------|-----|
-| **Jogo (Vercel)** | [sol-ttt.vercel.app](https://sol-ttt.vercel.app) |
+| **Jogo (Vercel)** | [soltactoe.xyz](https://soltactoe.xyz) · [sol-ttt.vercel.app](https://sol-ttt.vercel.app) |
 | **Repo GitHub** | [hgustavo98/sol-tictactoe](https://github.com/hgustavo98/sol-tictactoe) |
 | **Projeto Vercel** | `sol-ttt` |
 | **API (Render)** | `https://sol-ttt-api.onrender.com` |

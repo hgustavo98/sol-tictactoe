@@ -2,6 +2,8 @@
 if (typeof window !== "undefined") {
   const { hostname, protocol, href } = window.location;
   const isProdHost =
+    hostname === "soltactoe.xyz" ||
+    hostname === "www.soltactoe.xyz" ||
     hostname === "sol-tictactoe.vercel.app" ||
     hostname === "sol-ttt.vercel.app" ||
     hostname.endsWith(".vercel.app");
